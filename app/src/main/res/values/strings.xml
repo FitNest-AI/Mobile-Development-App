@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FitNest</string>
     <string name="onboarding_text">Your Personal AI Trainer in Your Pocket</string>
-    <string name="get_started">Get Started-></string>
+    <string name="get_started">Get Started -></string>
     <string name="already_have_account">Already have account? Sign in</string>
     <string name="discover_workout_set">Discover Workout Set</string>
     <string name="create_set">Create Set</string>
