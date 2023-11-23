@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
         android:layout_width="350dp"
         android:layout_height="95dp"
         android:background="@drawable/rounded_background"
@@ -17,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/setContainer"
             android:layout_width="350dp"
             android:layout_height="95dp"
             android:background="@drawable/rounded_background"
@@ -28,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/tv_set_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_black"
@@ -39,7 +38,7 @@
                 tools:layout_editor_absoluteY="16dp" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/tv_set_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
@@ -47,10 +46,10 @@
                 android:text="10.20"
                 android:textColor="@color/yellow"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_set_name" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_set_start"
                 android:layout_width="60dp"
                 android:layout_height="25dp"
                 android:layout_marginStart="28dp"
@@ -68,10 +67,10 @@
                 app:iconPadding="0dp"
                 app:iconTint="@color/greeen"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_set_time" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/img_set"
                 android:layout_width="387dp"
                 android:layout_height="137dp"
                 app:srcCompat="@drawable/set_image3"
@@ -79,28 +78,6 @@
                 tools:layout_editor_absoluteY="-21dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_black"
-            android:text="30 Hari jadi eren yeger"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="16dp" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:fontFamily="@font/inter_black"
-            android:text="10.20"
-            android:textColor="@color/yellow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
