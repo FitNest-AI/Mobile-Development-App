@@ -17,6 +17,18 @@
         android:theme="@style/Theme.FitNestApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.set.SetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.result.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.createaccount.CreateAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.createset.CreateSetActivity"
             android:exported="false" />
         <activity
