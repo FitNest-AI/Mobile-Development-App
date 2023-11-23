@@ -7,6 +7,9 @@
         android:title="@string/home" />
 
     <item
+        android:id="@+id/placeHolder"
+        android:title=""/>
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/profile"
         android:iconTint="@color/menu_color"
