@@ -52,6 +52,8 @@ dependencies {
 
     implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     kapt("androidx.room:room-compiler:2.5.2")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
