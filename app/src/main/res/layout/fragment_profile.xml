@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:layout_centerHorizontal="true"
-            android:text="Nama"
+            android:text="Bogem Lokomotif"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:fontFamily="@font/inter_bold"/>
@@ -50,6 +50,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="-55dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/front_image" />
+        android:src="@drawable/user" />
 
 </RelativeLayout>

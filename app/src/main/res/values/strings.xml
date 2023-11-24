@@ -35,17 +35,17 @@
         <item>10.20</item>
         <item>10.20</item>
     </string-array>
-    <string-array name="data_set_iamge">
+    <integer-array name="data_set_iamge">
         <item>@drawable/set_image1</item>
         <item>@drawable/set_image1</item>
         <item>@drawable/set_image1</item>
-        <item>@drawable/set_image1</item>
-        <item>@drawable/set_image1</item>
-        <item>@drawable/set_image1</item>
-        <item>@drawable/set_image1</item>
-        <item>@drawable/set_image1</item>
-        <item>@drawable/set_image1</item>
-    </string-array>
+        <item>@drawable/set_image2</item>
+        <item>@drawable/set_image2</item>
+        <item>@drawable/set_image2</item>
+        <item>@drawable/set_image3</item>
+        <item>@drawable/set_image3</item>
+        <item>@drawable/set_image3</item>
+    </integer-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="workout_list">Workout List</string>

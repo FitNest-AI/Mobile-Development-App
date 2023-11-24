@@ -31,18 +31,20 @@
                 android:id="@+id/tv_set_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter_black"
                 android:text="30 Hari jadi eren yeger"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="28dp"
-                tools:layout_editor_absoluteY="16dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_set_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="16dp"
                 android:fontFamily="@font/inter_black"
                 android:text="10.20"
                 android:textColor="@color/yellow"
@@ -53,7 +55,7 @@
                 android:id="@+id/btn_set_start"
                 android:layout_width="60dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="16dp"
                 android:backgroundTint="@color/greeen"
                 android:fontFamily="@font/inter_black"
                 android:insetTop="0dp"
@@ -74,8 +76,8 @@
                 android:id="@+id/img_set"
                 android:layout_width="387dp"
                 android:layout_height="137dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_set_time"
                 app:srcCompat="@drawable/set_image3"
-                tools:layout_editor_absoluteX="101dp"
                 tools:layout_editor_absoluteY="-21dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

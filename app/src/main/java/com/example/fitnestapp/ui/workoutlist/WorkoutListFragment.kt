@@ -5,56 +5,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
+import com.example.fitnestapp.databinding.FragmentHomeBinding
+import com.example.fitnestapp.databinding.FragmentWorkoutListBinding
+import com.example.fitnestapp.model.Workout
+import com.example.fitnestapp.ui.home.HomeAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [WorkoutListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class WorkoutListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val list = ArrayList<Workout>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private var followBinding: FragmentWorkoutListBinding? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentWorkoutListBinding.bind(view)
+        followBinding = binding
+
+        binding.rvWorkoutList.setHasFixedSize(true)
+        binding.rvWorkoutList.layoutManager = LinearLayoutManager(context)
+        val listDrakorAdapter = HomeAdapter(list)
+        binding.rvWorkoutList.adapter = listDrakorAdapter
+
+        list.addAll(getListWorkout())
+    }
+
+    private fun getListWorkout(): ArrayList<Workout> {
+        val dataName = resources.getStringArray(R.array.data_set_name)
+        val dataTime = resources.getStringArray(R.array.data_set_time)
+        val dataImage = resources.obtainTypedArray(R.array.data_set_iamge)
+        val listWorkout = ArrayList<Workout>()
+        for (i in dataName.indices) {
+            val workout = Workout(dataName[i], dataTime[i], dataImage.getResourceId(i, -1))
+            listWorkout.add(workout)
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_workout_list, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WorkoutListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WorkoutListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        return listWorkout
     }
 }
