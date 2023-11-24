@@ -93,6 +93,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/inter_black"
             android:text="Create"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -104,6 +105,7 @@
             android:layout_marginStart="8dp"
             android:fontFamily="@font/inter_black"
             android:text="Set"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -141,6 +143,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/inter_black"
             android:text="@string/discover_workout_set"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -152,6 +155,7 @@
             android:layout_marginStart="8dp"
             android:fontFamily="@font/inter_black"
             android:text="Set"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
