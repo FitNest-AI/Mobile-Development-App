@@ -11,6 +11,14 @@
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
+
+    <fragment
+        android:id="@+id/navigation_workoutList"
+        android:name="com.example.fitnestapp.ui.workoutlist.WorkoutListFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+
+
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.fitnestapp.ui.profile.ProfileFragment"
