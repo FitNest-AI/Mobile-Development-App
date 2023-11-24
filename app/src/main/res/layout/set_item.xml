@@ -31,12 +31,14 @@
                 android:id="@+id/tv_set_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter_black"
                 android:text="30 Hari jadi eren yeger"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="28dp"
-                tools:layout_editor_absoluteY="16dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_set_time"
@@ -72,11 +74,13 @@
 
             <ImageView
                 android:id="@+id/img_set"
-                android:layout_width="387dp"
+                android:layout_width="254dp"
                 android:layout_height="137dp"
-                app:srcCompat="@drawable/set_image3"
-                tools:layout_editor_absoluteX="101dp"
-                tools:layout_editor_absoluteY="-21dp" />
+                android:layout_marginStart="148dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/set_image3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
