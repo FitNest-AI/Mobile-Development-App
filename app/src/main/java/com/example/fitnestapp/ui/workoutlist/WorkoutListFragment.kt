@@ -33,7 +33,7 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
     private fun getListWorkout(): ArrayList<Workout> {
         val dataName = resources.getStringArray(R.array.data_set_name)
         val dataTime = resources.getStringArray(R.array.data_set_time)
-        val dataImage = resources.obtainTypedArray(R.array.data_set_iamge)
+        val dataImage = resources.obtainTypedArray(R.array.data_set_image)
         val listWorkout = ArrayList<Workout>()
         for (i in dataName.indices) {
             val workout = Workout(dataName[i], dataTime[i], dataImage.getResourceId(i, -1))
