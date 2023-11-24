@@ -8,8 +8,8 @@
     tools:context=".ui.workoutlist.WorkoutListActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="552dp"
+        android:layout_width="410dp"
+        android:layout_height="592dp"
         android:background="@drawable/background_shape"
         android:backgroundTint="@color/agakgrey"
         app:layout_constraintBottom_toBottomOf="parent"

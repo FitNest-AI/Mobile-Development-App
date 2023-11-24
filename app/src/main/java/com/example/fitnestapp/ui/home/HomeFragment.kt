@@ -28,8 +28,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.rvMain.setHasFixedSize(true)
         binding.rvMain.layoutManager = LinearLayoutManager(context)
-        val listDrakorAdapter = HomeAdapter(list)
-        binding.rvMain.adapter = listDrakorAdapter
+        val popularSetAdapter = HomeAdapter(list)
+        binding.rvMain.adapter = popularSetAdapter
 
         list.addAll(getListWorkout())
     }

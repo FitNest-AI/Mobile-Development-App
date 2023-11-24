@@ -4,6 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".ui.createaccount.CreateAccountActivity">
+
+    <TextView
+        android:id="@+id/tv_login_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/inter_black"
+        android:text="Create Account"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="343dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="1dp"
+        android:hint="Email"
+        android:textColorHint="@color/yellow"
+        app:boxBackgroundColor="@color/agakgrey"
+        app:hintEnabled="true"
+        app:layout_constraintBottom_toTopOf="@+id/passwordEditTextLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_title2"
+        app:startIconDrawable="@drawable/ic_baseline_email_24">
+
+
+        <com.example.fitnestapp.ui.customview.EmailEditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:fontFamily="@font/inter_regular"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userIdEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="343dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:hint="User Id"
+        android:textColorHint="@color/yellow"
+        app:boxBackgroundColor="@color/agakgrey"
+        app:hintEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        tools:layout_editor_absoluteX="34dp">
+
+
+        <com.example.fitnestapp.ui.customview.EmailEditText
+            android:id="@+id/userIdEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:fontFamily="@font/inter_regular"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="343dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:hint="Password"
+        android:textColorHint="@color/yellow"
+        app:boxBackgroundColor="@color/agakgrey"
+        app:endIconMode="password_toggle"
+        app:hintEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/userIdEditTextLayout"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        tools:layout_editor_absoluteX="34dp">
+
+        <com.example.fitnestapp.ui.customview.PasswordEditText
+            android:id="@+id/passwordEditText"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/inter_regular"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ConfirmPasswordEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="343dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="8dp"
+        android:hint="Confirm Password"
+        android:textColorHint="@color/yellow"
+        app:boxBackgroundColor="@color/agakgrey"
+        app:endIconMode="password_toggle"
+        app:hintEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+        <com.example.fitnestapp.ui.customview.PasswordEditText
+            android:id="@+id/ConfirmPasswordEditText"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/inter_regular"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="343dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/red"
+        android:text="Login"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@+id/ConfirmPasswordEditTextLayout"
+        tools:layout_editor_absoluteX="34dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="343dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/white"
+        android:text=" Login With Google"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        tools:layout_editor_absoluteX="34dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
