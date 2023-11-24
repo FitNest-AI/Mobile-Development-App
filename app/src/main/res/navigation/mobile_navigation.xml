@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.fitnestapp.ui.fragment.HomeFragment"
+        android:name="com.example.fitnestapp.ui.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.fitnestapp.ui.fragment.ProfileFragment"
+        android:name="com.example.fitnestapp.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 
