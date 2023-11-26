@@ -8,6 +8,7 @@ import com.example.fitnestapp.databinding.ActivityMainBinding
 import com.example.fitnestapp.databinding.ActivityOnboardingBinding
 import com.example.fitnestapp.ui.MainActivity
 import com.example.fitnestapp.ui.createaccount.CreateAccountActivity
+import com.example.fitnestapp.ui.home.HomeFragment
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class OnboardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnGetStarted.setOnClickListener{
-            startActivity(Intent(this@OnboardingActivity, CreateAccountActivity::class.java))
+            startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
             finish()
         }
 
