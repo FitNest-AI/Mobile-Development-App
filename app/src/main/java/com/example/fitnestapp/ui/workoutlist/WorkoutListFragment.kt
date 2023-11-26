@@ -24,8 +24,8 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
 
         binding.rvWorkoutList.setHasFixedSize(true)
         binding.rvWorkoutList.layoutManager = LinearLayoutManager(context)
-        val listDrakorAdapter = HomeAdapter(list)
-        binding.rvWorkoutList.adapter = listDrakorAdapter
+        val listWorkoutSet = HomeAdapter(list)
+        binding.rvWorkoutList.adapter = listWorkoutSet
 
         list.addAll(getListWorkout())
     }
