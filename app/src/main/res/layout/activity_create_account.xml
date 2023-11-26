@@ -139,22 +139,28 @@
         android:id="@+id/button3"
         android:layout_width="343dp"
         android:layout_height="65dp"
+        android:layout_marginStart="34dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="34dp"
         android:backgroundTint="@color/red"
         android:text="Login"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@+id/ConfirmPasswordEditTextLayout"
-        tools:layout_editor_absoluteX="34dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ConfirmPasswordEditTextLayout" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="343dp"
         android:layout_height="65dp"
+        android:layout_marginStart="34dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="34dp"
         android:backgroundTint="@color/white"
         android:text=" Login With Google"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        tools:layout_editor_absoluteX="34dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
