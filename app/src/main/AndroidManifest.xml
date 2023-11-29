@@ -40,7 +40,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
             android:exported="true">

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnestapp.R
 import com.example.fitnestapp.model.Workout
 
-class HomeAdapter(val listWorkout: ArrayList<Workout>): RecyclerView.Adapter<HomeAdapter.ListViewHolder>() {
+class HomeAdapter(var listWorkout: ArrayList<Workout>): RecyclerView.Adapter<HomeAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -29,6 +29,15 @@ class HomeAdapter(val listWorkout: ArrayList<Workout>): RecyclerView.Adapter<Hom
     }
 
     override fun getItemCount(): Int = listWorkout.size
+
+    fun filterList(filterlist: ArrayList<Workout>) {
+        // below line is to add our filtered
+        // list in our course array list.
+        listWorkout = filterlist
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged()
+    }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name, time, image) = listWorkout[position]
