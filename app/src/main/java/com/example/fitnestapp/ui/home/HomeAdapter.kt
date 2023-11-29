@@ -31,11 +31,7 @@ class HomeAdapter(var listWorkout: ArrayList<Workout>): RecyclerView.Adapter<Hom
     override fun getItemCount(): Int = listWorkout.size
 
     fun filterList(filterlist: ArrayList<Workout>) {
-        // below line is to add our filtered
-        // list in our course array list.
         listWorkout = filterlist
-        // below line is to notify our adapter
-        // as change in recycler view data.
         notifyDataSetChanged()
     }
 

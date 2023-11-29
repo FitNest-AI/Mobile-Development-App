@@ -38,8 +38,6 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
             }
 
             override fun onQueryTextChange(msg: String): Boolean {
-                // inside on query text change method we are
-                // calling a method to filter our recycler view.
                 filter(msg)
                 return false
             }
@@ -60,25 +58,17 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
     }
 
     private fun filter(text: String) {
-        // creating a new array list to filter our data.
+
         val filteredlist: ArrayList<Workout> = ArrayList()
 
-        // running a for loop to compare elements.
         for (item in list) {
-            // checking if the entered string matched with any item of our recycler view.
             if (item.title.toLowerCase().contains(text.toLowerCase())) {
-                // if the item is matched we are
-                // adding it to our filtered list.
                 filteredlist.add(item)
             }
         }
         if (filteredlist.isEmpty()) {
-            // if no item is added in filtered list we are
-            // displaying a toast message as no data found.
             Toast.makeText(context, "No Data Found..", Toast.LENGTH_SHORT).show()
         } else {
-            // at last we are passing that filtered
-            // list to our adapter class.
             listWorkoutSet.filterList(filteredlist)
         }
     }
