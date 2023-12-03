@@ -20,12 +20,12 @@ class OnboardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnGetStarted.setOnClickListener{
-            startActivity(Intent(this@OnboardingActivity, LoginActivity::class.java))
+            startActivity(Intent(this@OnboardingActivity, CreateAccountActivity::class.java))
             finish()
         }
 
         binding.tvBtnSignin.setOnClickListener{
-            startActivity(Intent(this@OnboardingActivity, CreateAccountActivity::class.java))
+            startActivity(Intent(this@OnboardingActivity, LoginActivity::class.java))
             finish()
         }
 
