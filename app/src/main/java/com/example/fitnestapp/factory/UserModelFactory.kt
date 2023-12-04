@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.fitnestapp.data.repo.UserRepo
 import com.example.fitnestapp.di.Injection
 import com.example.fitnestapp.ui.createaccount.CreateAccViewModel
+import com.example.fitnestapp.ui.login.LoginViewModel
 
 class UserModelFactory(private val repo: UserRepo) :
     ViewModelProvider.NewInstanceFactory() {
@@ -13,6 +14,9 @@ class UserModelFactory(private val repo: UserRepo) :
         return when {
             modelClass.isAssignableFrom(CreateAccViewModel::class.java) -> {
                 CreateAccViewModel(repo) as T
+            }
+            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                return LoginViewModel(repo) as T
             }
 
 

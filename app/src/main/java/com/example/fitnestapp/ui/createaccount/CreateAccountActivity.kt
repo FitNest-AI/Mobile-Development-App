@@ -41,6 +41,7 @@ class CreateAccountActivity : AppCompatActivity() {
             if (isSuccess) {
                 binding.warningText.text = getString(R.string.success_register)
                 binding.warningText.setTextColor(ContextCompat.getColor(this, R.color.greeen))
+                startActivity(Intent(this@CreateAccountActivity,LoginActivity::class.java))
             } else {
                 Toast.makeText(this, "Register failed.", Toast.LENGTH_SHORT).show()
             }

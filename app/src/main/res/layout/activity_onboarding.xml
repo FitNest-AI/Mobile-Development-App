@@ -76,7 +76,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_bold"
+            android:fontFamily="@font/nunito_extrabold"
             android:text="@string/already_have_account"
             android:textColor="@color/white" />
 
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/nunito_bold"
+            android:fontFamily="@font/nunito_extrabold"
             android:text="Sign In"
             android:textColor="@color/yellow" />
     </LinearLayout>

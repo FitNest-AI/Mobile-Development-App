@@ -143,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/nunito_bold"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ConfirmPasswordEditTextLayout" />
