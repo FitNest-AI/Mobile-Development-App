@@ -1,5 +1,7 @@
 package com.example.fitnestapp.data.repo
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import com.example.fitnestapp.data.local.UserModel
 import com.example.fitnestapp.data.local.UserPreference
 import com.example.fitnestapp.data.remote.response.ResponseLogin
@@ -9,12 +11,8 @@ import kotlinx.coroutines.flow.Flow
 
 class UserRepo(private val apiService: ApiService, private val userPreference: UserPreference) {
 
-    suspend fun saveSession(user: UserModel) {
-        userPreference.saveSession(user)
-    }
-
-    fun getSession(): Flow<UserModel> {
-        return userPreference.getSession()
+    fun getSession(): LiveData<UserModel> {
+        return userPreference.getSession().asLiveData()
     }
 
     suspend fun login(email: String, password: String): ResponseLogin {

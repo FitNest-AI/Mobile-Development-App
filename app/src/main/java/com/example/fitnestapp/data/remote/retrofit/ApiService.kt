@@ -4,6 +4,7 @@ import com.example.fitnestapp.data.remote.response.ResponseLogin
 import com.example.fitnestapp.data.remote.response.ResponseRegist
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
