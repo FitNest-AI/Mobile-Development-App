@@ -18,7 +18,7 @@ class CreateAccViewModel(private val repo: UserRepo) : ViewModel() {
     fun register(email: String, password: String, confirmPassword: String) {
         viewModelScope.launch {
             try {
-                val response = repo.register(email, password, confirmPassword) // Misalnya ini adalah panggilan API Anda
+                val response = repo.register(email, password, confirmPassword)
                 registerStatus.postValue(true)
                 Log.d("ApiResponse", "Response: $response")
             } catch (e: HttpException) {
