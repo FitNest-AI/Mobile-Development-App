@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/inter_black"
+            android:fontFamily="@font/nunito_extrabold"
             android:text="Wibukuat"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -35,12 +35,14 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_black"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="Exercises"
         android:textColor="@color/white"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="157dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -60,13 +62,13 @@
         android:id="@+id/button5"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="328dp"
         android:backgroundTint="@color/greeen"
         android:fontFamily="@font/inter_black"
         android:text="Play"
         app:cornerRadius="@dimen/btn_corner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 

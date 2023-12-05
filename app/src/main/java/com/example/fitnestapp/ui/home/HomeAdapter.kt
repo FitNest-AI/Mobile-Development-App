@@ -4,11 +4,13 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnestapp.R
 import com.example.fitnestapp.model.Workout
+import com.example.fitnestapp.ui.set.SetActivity
 
 class HomeAdapter(var listWorkout: ArrayList<Workout>): RecyclerView.Adapter<HomeAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -21,6 +23,7 @@ class HomeAdapter(var listWorkout: ArrayList<Workout>): RecyclerView.Adapter<Hom
         val name: TextView = itemView.findViewById(R.id.tv_set_name)
         val time: TextView = itemView.findViewById(R.id.tv_set_time)
         val image: ImageView = itemView.findViewById(R.id.img_set)
+        val btnPlay : Button = itemView.findViewById(R.id.btn_set_start)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -41,11 +44,11 @@ class HomeAdapter(var listWorkout: ArrayList<Workout>): RecyclerView.Adapter<Hom
         holder.time.text = time
         holder.image.setImageResource(image)
 
-//        holder.itemView.setOnClickListener {
-//            val intentDetail = Intent(holder.itemView.context, DetailActivity::class.java)
+        holder.btnPlay.setOnClickListener {
+            val intentDetail = Intent(holder.itemView.context, SetActivity::class.java)
+            holder.itemView.context.startActivity(intentDetail)
 //            intentDetail.putExtra("key_drakor", listDrakor[holder.adapterPosition])
-//            holder.itemView.context.startActivity(intentDetail)
-//        }
+        }
     }
 
     interface OnItemClickCallback {
