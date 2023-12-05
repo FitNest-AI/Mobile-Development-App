@@ -12,6 +12,7 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="success_register">Register Success</string>
+    <string name="default_web_client_id">700415588444-njrs1o4dt1ii18gc716tdc97neun64lg.apps.googleusercontent.com</string>
 
 
     <string-array name="data_set_name">
