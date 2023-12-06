@@ -179,15 +179,15 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="31dp"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/user"
         app:layout_constraintBottom_toTopOf="@+id/layout_banner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.272" />
 
     <TextView
         android:id="@+id/textView11"
@@ -195,7 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/inter_regular"
+        android:fontFamily="@font/nunito_regular"
         android:text="Hallo"
         android:textColor="@color/yellow"
         app:layout_constraintStart_toEndOf="@+id/circleImageView"
@@ -206,7 +206,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="200dp"
-        android:fontFamily="@font/inter_black"
+        android:fontFamily="@font/nunito_semibold"
         android:text="User Fitnest"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -222,7 +222,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:listitem="@layout/set_item"/>
+        tools:listitem="@layout/set_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
