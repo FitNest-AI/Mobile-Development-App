@@ -171,7 +171,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/nunito_extrabold"
-        android:text="Popular Workout Set"
+        android:text="Recommended Workout Set"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
