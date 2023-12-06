@@ -11,6 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnestapp.R
+import com.example.fitnestapp.data.local.UserModel
+import com.example.fitnestapp.data.local.UserPreference
+import com.example.fitnestapp.data.local.dataStore
+import com.example.fitnestapp.data.remote.response.UserLogin
 import com.example.fitnestapp.databinding.FragmentHomeBinding
 import com.example.fitnestapp.model.Workout
 
@@ -19,12 +23,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val list = ArrayList<Workout>()
 
-
+    private lateinit var userPreferences: UserPreference
     private var followBinding: FragmentHomeBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentHomeBinding.bind(view)
         followBinding = binding
+
+
 
         binding.rvMain.setHasFixedSize(true)
         binding.rvMain.layoutManager = LinearLayoutManager(context)

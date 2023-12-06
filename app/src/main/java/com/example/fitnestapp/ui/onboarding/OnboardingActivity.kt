@@ -31,11 +31,6 @@ class OnboardingActivity : AppCompatActivity() {
 
         userPreference = UserPreference.getInstance(this.dataStore)
         CoroutineScope(Dispatchers.IO).launch {
-//            val user = userPreference.getSession().first()
-//            if (user.isLogin ){
-//                startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
-//                finish()
-//            }
             auth = Firebase.auth
             val currentUser = auth.currentUser
             updateUi(currentUser)
@@ -46,7 +41,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     private suspend fun updateUi(currentUser: FirebaseUser?) {
         val user = userPreference.getSession().first()
-        if (currentUser != null && user.isLogin) {
+        if (currentUser != null || user.isLogin) {
             startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
             finish()
         }

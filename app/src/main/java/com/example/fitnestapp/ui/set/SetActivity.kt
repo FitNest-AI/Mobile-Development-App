@@ -1,12 +1,15 @@
 package com.example.fitnestapp.ui.set
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.fitnestapp.R
+import androidx.appcompat.app.AppCompatActivity
+import com.example.fitnestapp.databinding.ActivitySetBinding
 
 class SetActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySetBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_set)
+        binding = ActivitySetBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
