@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.camera.CameraActivity">
 
-    <androidx.camera.view.PreviewView
-        android:id="@+id/preview"
+    <SurfaceView
+        android:id="@+id/surfaceView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.camera.view.PreviewView>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="269dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="350dp"
