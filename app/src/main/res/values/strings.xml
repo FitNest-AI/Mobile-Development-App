@@ -87,6 +87,7 @@
         <item>10.20</item>
         <item>10.20</item>
     </string-array>
+    <string name="title_activity_camera_component">CameraComponent</string>
 
 
 </resources>

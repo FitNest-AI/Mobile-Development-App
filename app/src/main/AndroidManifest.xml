@@ -19,6 +19,11 @@
         android:theme="@style/Theme.FitNestApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.customview.CameraComponent"
+            android:exported="false"
+            android:label="@string/title_activity_camera_component"
+            android:theme="@style/Theme.FitNestApp" />
+        <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
         <activity
