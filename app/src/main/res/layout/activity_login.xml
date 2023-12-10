@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.auth.login.LoginActivity">
 
 
     <TextView
@@ -80,8 +80,8 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/nunito_extrabold"
         android:text="Forgot Password?"
         android:textColor="@color/yellow"

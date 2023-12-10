@@ -1,4 +1,4 @@
-package com.example.fitnestapp.ui.login
+package com.example.fitnestapp.ui.auth.login
 
 import android.app.Activity
 import android.content.Intent

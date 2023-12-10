@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context=".ui.createaccount.CreateAccountActivity">
+    tools:context=".ui.auth.createaccount.CreateAccountActivity">
 
     <TextView
         android:id="@+id/tv_login_title2"

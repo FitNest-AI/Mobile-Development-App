@@ -7,8 +7,8 @@ import com.example.fitnestapp.data.local.UserPreference
 import com.example.fitnestapp.data.local.dataStore
 import com.example.fitnestapp.databinding.ActivityOnboardingBinding
 import com.example.fitnestapp.ui.MainActivity
-import com.example.fitnestapp.ui.createaccount.CreateAccountActivity
-import com.example.fitnestapp.ui.login.LoginActivity
+import com.example.fitnestapp.ui.auth.createaccount.CreateAccountActivity
+import com.example.fitnestapp.ui.auth.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth

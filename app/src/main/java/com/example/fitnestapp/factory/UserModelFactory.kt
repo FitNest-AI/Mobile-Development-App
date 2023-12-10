@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.fitnestapp.data.repo.UserRepo
 import com.example.fitnestapp.di.Injection
-import com.example.fitnestapp.ui.createaccount.CreateAccViewModel
-import com.example.fitnestapp.ui.login.LoginViewModel
+import com.example.fitnestapp.ui.auth.createaccount.CreateAccViewModel
+import com.example.fitnestapp.ui.auth.login.LoginViewModel
 
 class UserModelFactory(private val repo: UserRepo) :
     ViewModelProvider.NewInstanceFactory() {

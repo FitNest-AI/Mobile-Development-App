@@ -1,4 +1,4 @@
-package com.example.fitnestapp.ui.login
+package com.example.fitnestapp.ui.auth.login
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.example.fitnestapp.ui.createaccount
+package com.example.fitnestapp.ui.auth.createaccount
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import com.example.fitnestapp.R
 import com.example.fitnestapp.databinding.ActivityCreateAccountBinding
 import com.example.fitnestapp.factory.UserModelFactory
-import com.example.fitnestapp.ui.login.LoginActivity
+import com.example.fitnestapp.ui.auth.login.LoginActivity
 
 class CreateAccountActivity : AppCompatActivity() {
 
@@ -41,7 +41,7 @@ class CreateAccountActivity : AppCompatActivity() {
             if (isSuccess) {
                 binding.warningText.text = getString(R.string.success_register)
                 binding.warningText.setTextColor(ContextCompat.getColor(this, R.color.greeen))
-                startActivity(Intent(this@CreateAccountActivity,LoginActivity::class.java))
+                startActivity(Intent(this@CreateAccountActivity, LoginActivity::class.java))
             } else {
                 Toast.makeText(this, "Register failed.", Toast.LENGTH_SHORT).show()
             }

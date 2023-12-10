@@ -1,4 +1,4 @@
-package com.example.fitnestapp.ui.createaccount
+package com.example.fitnestapp.ui.auth.createaccount
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
