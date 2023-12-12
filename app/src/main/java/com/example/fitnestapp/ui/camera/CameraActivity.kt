@@ -6,12 +6,14 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.*
 import android.hardware.camera2.CameraCaptureSession
+import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
+import android.util.Size
 import android.view.Surface
 import android.view.TextureView
 import android.widget.ImageView
@@ -128,8 +130,8 @@ class CameraActivity : AppCompatActivity() {
             cameraManager.cameraIdList[0],
             object : CameraDevice.StateCallback() {
                 override fun onOpened(p0: CameraDevice) {
-                    var captureRequest = p0.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
-                    var surface = Surface(textureView.surfaceTexture)
+                    val captureRequest = p0.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+                    val surface = Surface(textureView.surfaceTexture)
                     captureRequest.addTarget(surface)
                     p0.createCaptureSession(
                         listOf(surface),
