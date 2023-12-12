@@ -27,15 +27,16 @@
         <item>wdkwodkowdwj</item>
     </string-array>
     <string-array name="data_set_time">
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
+        <item>4 Exercises</item>
+        <item>10 Exercises</item>
+        <item>10 Exercises</item>
+        <item>10 Exercises</item>
+        <item>10 Exercises</item>
+        <item>10 Exercises</item>
+        <item>10 Exercises</item>
+        <item>10 Exercises</item>
+        <item>10 Exercises</item>
+
     </string-array>
     <integer-array name="data_set_image">
         <item>@drawable/set_image1</item>

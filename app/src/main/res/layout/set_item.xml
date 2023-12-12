@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="95dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="3dp"
@@ -13,7 +13,6 @@
         android:background="@drawable/rounded_background"
         android:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -45,7 +44,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="3dp"
             android:fontFamily="@font/nunito_extrabold"
             android:text="10.20"
             android:textColor="@color/yellow"
@@ -57,7 +55,7 @@
             android:layout_width="60dp"
             android:layout_height="25dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/greeen"
             android:fontFamily="@font/nunito_extrabold"
             android:insetTop="0dp"
