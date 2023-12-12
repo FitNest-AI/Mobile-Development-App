@@ -7,22 +7,30 @@
     tools:context=".ui.camera.CameraActivity">
 
 
-    <SurfaceView
-        android:id="@+id/surfaceView"
+    <TextureView
+        android:id="@+id/textureView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="170dp"
         android:layout_height="180dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="170dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:alpha="0.7"
         android:background="@drawable/camera_shape"
         android:backgroundTint="@color/putihtua"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
@@ -33,7 +41,7 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_extrabold"
-            android:text="Push Up"
+            android:text="Strech"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
