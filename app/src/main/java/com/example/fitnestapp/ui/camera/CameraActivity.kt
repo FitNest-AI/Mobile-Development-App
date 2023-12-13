@@ -18,14 +18,13 @@ import android.view.Surface
 import android.view.TextureView
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.impl.utils.CompareSizesByArea
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.fitnestapp.R
 import com.example.fitnestapp.databinding.ActivityCameraBinding
-import com.example.fitnestapp.ml.AutoModel4
+import com.example.fitnestapp.ml.Detector
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
@@ -36,7 +35,7 @@ import java.util.Collections
 class CameraActivity : AppCompatActivity() {
     val paint = Paint()
     lateinit var imageProcessor: ImageProcessor
-    lateinit var model: AutoModel4
+    private lateinit var model: Detector
     lateinit var bitmap: Bitmap
     lateinit var imageView: ImageView
     lateinit var handler: Handler
@@ -60,17 +59,16 @@ class CameraActivity : AppCompatActivity() {
 
 
         imageProcessor =
-            ImageProcessor.Builder().add(ResizeOp(192, 192, ResizeOp.ResizeMethod.BILINEAR)).build()
+            ImageProcessor.Builder().add(ResizeOp(256, 256, ResizeOp.ResizeMethod.BILINEAR)).build()
 
 
-        model = AutoModel4.newInstance(this)
+        val model = Detector.newInstance(this)
         imageView = findViewById(R.id.imageView)
         textureView = findViewById(R.id.textureView)
         cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
         handlerThread = HandlerThread("videoThread")
         handlerThread.start()
         handler = Handler(handlerThread.looper)
-        val tvPoseData: TextView = findViewById(R.id.tvPoseData)
 
 
         paint.setColor(Color.YELLOW)
@@ -90,20 +88,20 @@ class CameraActivity : AppCompatActivity() {
 
             override fun onSurfaceTextureUpdated(p0: SurfaceTexture) {
                 bitmap = textureView.bitmap!!
-                var tensorImage = TensorImage(DataType.UINT8)
+                var tensorImage = TensorImage(DataType.FLOAT32)
                 tensorImage.load(bitmap)
                 tensorImage = imageProcessor.process(tensorImage)
 
                 val inputFeature0 =
-                    TensorBuffer.createFixedSize(intArrayOf(1, 192, 192, 3), DataType.UINT8)
+                    TensorBuffer.createFixedSize(intArrayOf(1, 256, 256, 3), DataType.FLOAT32)
                 inputFeature0.loadBuffer(tensorImage.buffer)
 
                 val outputs = model.process(inputFeature0)
                 val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
 
-                val outputDataText = outputFeature0.joinToString(separator = ", ", prefix = "[", postfix = "]")
+                val outputDataText =
+                    outputFeature0.joinToString(separator = ", ", prefix = "[", postfix = "]")
                 runOnUiThread {
-                    tvPoseData.text = outputDataText
                     Log.d("MLData", outputDataText)
                 }
 
@@ -141,7 +139,8 @@ class CameraActivity : AppCompatActivity() {
     fun openCamera() {
         val cameraId = cameraManager.cameraIdList[0]
         val characteristics = cameraManager.getCameraCharacteristics(cameraId)
-        val streamConfigurationMap = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+        val streamConfigurationMap =
+            characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
         val largestSize = Collections.max(
             listOf(*streamConfigurationMap!!.getOutputSizes(SurfaceTexture::class.java)),
             CompareSizesByArea()
