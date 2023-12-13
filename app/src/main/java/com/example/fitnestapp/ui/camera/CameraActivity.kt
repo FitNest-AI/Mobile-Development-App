@@ -18,6 +18,7 @@ import android.view.Surface
 import android.view.TextureView
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.impl.utils.CompareSizesByArea
 import androidx.core.app.ActivityCompat
@@ -69,6 +70,8 @@ class CameraActivity : AppCompatActivity() {
         handlerThread = HandlerThread("videoThread")
         handlerThread.start()
         handler = Handler(handlerThread.looper)
+        val tvPoseData: TextView = findViewById(R.id.tvPoseData)
+
 
         paint.setColor(Color.YELLOW)
 
@@ -97,6 +100,12 @@ class CameraActivity : AppCompatActivity() {
 
                 val outputs = model.process(inputFeature0)
                 val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
+
+                val outputDataText = outputFeature0.joinToString(separator = ", ", prefix = "[", postfix = "]")
+                runOnUiThread {
+                    tvPoseData.text = outputDataText
+                    Log.d("MLData", outputDataText)
+                }
 
                 val mutable = bitmap.copy(Bitmap.Config.ARGB_8888, true)
                 val canvas = Canvas(mutable)
