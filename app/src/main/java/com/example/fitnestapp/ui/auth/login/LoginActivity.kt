@@ -15,6 +15,7 @@ import com.example.fitnestapp.data.local.dataStore
 import com.example.fitnestapp.databinding.ActivityLoginBinding
 import com.example.fitnestapp.factory.UserModelFactory
 import com.example.fitnestapp.ui.MainActivity
+import com.example.fitnestapp.ui.biodata.BiodataActivity
 import com.example.fitnestapp.ui.home.HomeFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -69,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     saveToken.await()
 
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    startActivity(Intent(this@LoginActivity, BiodataActivity::class.java))
                     finish()
                 }
             }

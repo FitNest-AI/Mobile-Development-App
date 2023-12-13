@@ -1,11 +1,13 @@
 package com.example.fitnestapp.ui.biodata
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import com.example.fitnestapp.R
 import com.example.fitnestapp.databinding.ActivityBiodataBinding
+import com.example.fitnestapp.ui.MainActivity
 import com.example.fitnestapp.utlis.DatePickerFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -18,6 +20,11 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
         super.onCreate(savedInstanceState)
         binding = ActivityBiodataBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnNext.setOnClickListener {
+            startActivity(Intent(this@BiodataActivity, MainActivity::class.java))
+            finish()
+        }
     }
 
     fun showDatePicker(view: View) {
