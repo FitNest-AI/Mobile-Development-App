@@ -19,16 +19,26 @@
         android:theme="@style/Theme.FitNestApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.customview.CameraComponent"
-            android:exported="false"
-            android:label="@string/title_activity_camera_component"
-            android:theme="@style/Theme.FitNestApp" />
+            android:name=".ui.biodata.BiodataActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.customview.CameraComponent" -->
+        <!-- android:exported="false" -->
+        <!-- android:label="@string/title_activity_camera_component" -->
+        <!-- android:theme="@style/Theme.FitNestApp" /> -->
         <activity
             android:name=".ui.camera.CameraActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.camera.MainActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.camera.MainActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ui.set.SetActivity"
             android:exported="false" />
@@ -51,15 +61,6 @@
             android:name=".ui.MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".ui.onboarding.OnboardingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
