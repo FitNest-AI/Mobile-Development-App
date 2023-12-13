@@ -127,7 +127,7 @@ class CameraActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     fun openCamera() {
         cameraManager.openCamera(
-            cameraManager.cameraIdList[1],
+            cameraManager.cameraIdList[0],
             object : CameraDevice.StateCallback() {
                 override fun onOpened(p0: CameraDevice) {
                     val captureRequest = p0.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
@@ -180,26 +180,6 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
-    private fun chooseOptimalSize(choices: Array<Size>, width: Int, height: Int): Size {
-        val aspectRatio = width.toDouble() / height
-        return choices.filter {
-            val previewAspectRatio = it.width.toDouble() / it.height
-            Math.abs(aspectRatio - previewAspectRatio) < 0.1 && it.width <= width && it.height <= height
-        }.maxByOrNull { it.height * it.width } ?: choices[0]
-    }
-
-    private fun configureTransform(viewWidth: Int, viewHeight: Int) {
-        val rotation = windowManager.defaultDisplay.rotation
-        val matrix = Matrix()
-        val viewRect = RectF(0f, 0f, viewWidth.toFloat(), viewHeight.toFloat())
-        val bufferRect = RectF(0f, 0f, viewHeight.toFloat(), viewWidth.toFloat())
-        val centerX = viewRect.centerX()
-        val centerY = viewRect.centerY()
-        bufferRect.offset(centerX - bufferRect.centerX(), centerY - bufferRect.centerY())
-        matrix.setRectToRect(viewRect, bufferRect, Matrix.ScaleToFit.FILL)
-        matrix.postRotate(90f * (rotation - 2), centerX, centerY)
-        textureView.setTransform(matrix)
-    }
 
 
     companion object {
