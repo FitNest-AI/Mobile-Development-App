@@ -89,6 +89,30 @@
         <item>10.20</item>
     </string-array>
     <string name="title_activity_camera_component">CameraComponent</string>
+    <string name="gain_muscle">Gain Muscle</string>
+    <string name="keep_fit">Keep Fit</string>
+    <string name="lose_weight">Lose Weight</string>
+    <string name="improving_posture">Improving Posture</string>
+    <string name="what_target_muscles_do_you_want_to_train">What target muscles do you want to train?</string>
+    <string name="legs">Legs</string>
+    <string name="triceps">Triceps</string>
+    <string name="glutes">Glutes</string>
+    <string name="back">Back</string>
+    <string name="chest">Chest</string>
+    <string name="abs">ABS</string>
+    <string name="shoulder">Shoulder</string>
+    <string name="hand">Hand</string>
+    <string name="biceps">biceps</string>
+    <string name="hamstring">Hamstring</string>
+    <string name="what_kind_of_food_do_you_eat">What kind of food do you eat?</string>
+    <string name="flexitarian">Flexitarian</string>
+    <string name="vegan">Vegan</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="pescetarian">Pescetarian</string>
+    <string name="carnivore">Carnivore</string>
+    <string name="you_can_choose_more_than_one">You can choose more than one</string>
+    <string name="save">Save</string>
+    <string name="choose_your_goal_using_fitnest">Choose your goal using FitNest</string>
 
 
 </resources>

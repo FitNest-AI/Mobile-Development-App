@@ -20,6 +20,9 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.biodata.GoalActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,10 +56,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.createset.CreateSetActivity"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".ui.workoutlist.WorkoutListActivity"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.workoutlist.WorkoutListActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"

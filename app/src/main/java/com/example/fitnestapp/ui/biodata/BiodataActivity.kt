@@ -22,7 +22,7 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
         setContentView(binding.root)
 
         binding.btnNext.setOnClickListener {
-            startActivity(Intent(this@BiodataActivity, MainActivity::class.java))
+            startActivity(Intent(this@BiodataActivity, GoalActivity::class.java))
             finish()
         }
     }

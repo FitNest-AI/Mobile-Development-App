@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/grey"
+    tools:context=".ui.biodata.GoalActivity">
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/choose_your_goal_using_fitnest"
+        android:fontFamily="@font/nunito_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGainMuscle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gain_muscle"
+        android:textSize="12sp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView23"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btnLoseWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/lose_weight"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintStart_toEndOf="@id/btnGainMuscle"
+        app:layout_constraintTop_toBottomOf="@id/textView23" />
+
+    <Button
+        android:id="@+id/btnKeepFit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/keep_fit"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintStart_toEndOf="@id/btnLoseWeight"
+        app:layout_constraintTop_toBottomOf="@id/textView23" />
+
+    <Button
+        android:id="@+id/btnImprovingPosture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="@string/improving_posture"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnGainMuscle"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/you_can_choose_more_than_one"
+        android:textColor="@color/yellow"
+        android:textSize="16sp"
+        android:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnImprovingPosture" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/what_target_muscles_do_you_want_to_train"
+        android:fontFamily="@font/nunito_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView27" />
+
+    <Button
+        android:id="@+id/btnLegs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="@string/legs"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView24"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btnTriceps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/triceps"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView24"
+        app:layout_constraintStart_toEndOf="@id/btnLegs"/>
+
+    <Button
+        android:id="@+id/btnGlutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/glutes"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView24"
+        app:layout_constraintStart_toEndOf="@id/btnTriceps"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/back"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView24"
+        app:layout_constraintStart_toEndOf="@id/btnGlutes"/>
+
+    <Button
+        android:id="@+id/btnChest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="@string/chest"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnLegs"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btnAbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/abs"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnLegs"
+        app:layout_constraintStart_toEndOf="@id/btnChest"/>
+
+    <Button
+        android:id="@+id/btnShoulder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/shoulder"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnLegs"
+        app:layout_constraintStart_toEndOf="@id/btnAbs"/>
+
+    <Button
+        android:id="@+id/btnHand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/hand"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnChest" />
+
+    <Button
+        android:id="@+id/btnBiceps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="@string/biceps"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnChest"
+        app:layout_constraintStart_toEndOf="@id/btnHand"/>
+
+    <Button
+        android:id="@+id/btnHamstring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/hamstring"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnChest"
+        app:layout_constraintStart_toEndOf="@id/btnBiceps"/>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/what_kind_of_food_do_you_eat"
+        android:fontFamily="@font/nunito_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView26" />
+
+    <Button
+        android:id="@+id/btnFlexitarian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="@string/flexitarian"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView25"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btnVegan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/vegan"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView25"
+        app:layout_constraintStart_toEndOf="@id/btnFlexitarian"/>
+
+    <Button
+        android:id="@+id/btnVegetarian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/vegetarian"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/textView25"
+        app:layout_constraintStart_toEndOf="@id/btnVegan"/>
+
+    <Button
+        android:id="@+id/btnPescetarian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="@string/pescetarian"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnFlexitarian"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btnCarnivore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/carnivore"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="12sp"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintTop_toBottomOf="@id/btnFlexitarian"
+        app:layout_constraintStart_toEndOf="@id/btnPescetarian"/>
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/you_can_choose_more_than_one"
+        android:textColor="@color/yellow"
+        android:textSize="16sp"
+        android:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnHand" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="343dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="@color/red"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/btn_corner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCarnivore" />
+</androidx.constraintlayout.widget.ConstraintLayout>
