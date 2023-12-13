@@ -16,8 +16,10 @@ import android.util.Log
 import android.util.Size
 import android.view.Surface
 import android.view.TextureView
+import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.impl.utils.CompareSizesByArea
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.fitnestapp.R
@@ -28,6 +30,7 @@ import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.util.Collections
 
 class CameraActivity : AppCompatActivity() {
     val paint = Paint()
@@ -40,6 +43,7 @@ class CameraActivity : AppCompatActivity() {
     lateinit var textureView: TextureView
     private lateinit var cameraManager: CameraManager
     private lateinit var binding: ActivityCameraBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
@@ -126,8 +130,27 @@ class CameraActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     fun openCamera() {
+        val cameraId = cameraManager.cameraIdList[0]
+        val characteristics = cameraManager.getCameraCharacteristics(cameraId)
+        val streamConfigurationMap = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+        val largestSize = Collections.max(
+            listOf(*streamConfigurationMap!!.getOutputSizes(SurfaceTexture::class.java)),
+            CompareSizesByArea()
+        )
+
+        val rotation = windowManager.defaultDisplay.rotation
+        val isPortrait = (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180)
+        val previewSize = if (isPortrait) {
+            Size(largestSize.height, largestSize.width)
+        } else {
+            largestSize
+        }
+
+        textureView.setAspectRatio(previewSize.width, previewSize.height)
+
+
         cameraManager.openCamera(
-            cameraManager.cameraIdList[0],
+            cameraId,
             object : CameraDevice.StateCallback() {
                 override fun onOpened(p0: CameraDevice) {
                     val captureRequest = p0.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
@@ -161,6 +184,25 @@ class CameraActivity : AppCompatActivity() {
     }
 
 
+    fun TextureView.setAspectRatio(width: Int, height: Int) {
+        val viewWidth = width
+        val viewHeight = height
+        if (viewWidth > 0 && viewHeight > 0) {
+            if (width > height) {
+                this.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            } else {
+                this.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            }
+            requestLayout()
+        }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -179,7 +221,6 @@ class CameraActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     companion object {
