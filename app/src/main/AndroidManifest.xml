@@ -19,8 +19,8 @@
         android:theme="@style/Theme.FitNestApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.biodata.BiodataActivity"
-            android:exported="false">
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.onboarding.OnboardingActivity"
+            android:name=".ui.biodata.BiodataActivity"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".ui.customview.CameraComponent" -->
         <!-- android:exported="false" -->
@@ -54,9 +54,9 @@
         <activity
             android:name=".ui.createset.CreateSetActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.workoutlist.WorkoutListActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ui.workoutlist.WorkoutListActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"
