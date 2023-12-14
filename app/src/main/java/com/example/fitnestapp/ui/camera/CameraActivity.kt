@@ -47,9 +47,7 @@ class CameraActivity : AppCompatActivity() {
     lateinit var textureView: TextureView
     private lateinit var cameraManager: CameraManager
     private lateinit var binding: ActivityCameraBinding
-    lateinit var feature0TextView : TextView
-    lateinit var feature1TextView : TextView
-    lateinit var feature2TextView : TextView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,27 +108,28 @@ class CameraActivity : AppCompatActivity() {
                 val w = bitmap.width
                 var x = 0
 
-                Log.d("output__", poseDetectorOutput.size.toString())
+
                 while (x <= 49) {
-                    if (poseDetectorOutput.get(x + 2) > 0.45) {
+                    if (poseDetectorOutput[x + 2] > 0.45) {
                         canvas.drawCircle(
-                            poseDetectorOutput.get(x + 1) * w,
-                            poseDetectorOutput.get(x) * h,
+                            poseDetectorOutput[x + 1] * w,
+                            poseDetectorOutput[x] * h,
                             10f,
                             paint
                         )
                         poseClassifier(poseDetectorOutput)
-                    } else {
-
                     }
                     x += 3
                 }
 
-//                poseClassifier(poseDetector(bitmap))
+                imageView.setImageBitmap(mutable)
+
             }
         }
 
     }
+
+    private fun visualizer () {}
 
 
     private fun poseDetector(bitmap: Bitmap): FloatArray {
@@ -153,36 +152,11 @@ class CameraActivity : AppCompatActivity() {
             Log.d("MLData", outputDataText)
         }
 
-        val mutable = bitmap.copy(Bitmap.Config.ARGB_8888, true)
-        val canvas = Canvas(mutable)
-        val h = bitmap.height
-        val w = bitmap.width
-        var x = 0
-
-        while (x <= 49) {
-            if (outputFeature0.get(x + 2) > 0.45) {
-                canvas.drawCircle(
-                    outputFeature0.get(x + 1) * w,
-                    outputFeature0.get(x) * h,
-                    10f,
-                    paint
-                )
-            } else {
-                binding.feature0Text.text = "Not Detected"
-                binding.feature1Text.text = "Not Detected"
-                binding.feature2Text.text = "Not Detected"
-            }
-            x += 3
-        }
-
-        imageView.setImageBitmap(mutable)
-
         return outputFeature0
     }
 
     private fun poseClassifier(outputDetection: FloatArray) {
         modelClassifier = PoseClassifier.newInstance(this@CameraActivity)
-
 
 
         val byteBuffer = ByteBuffer.allocateDirect(4 * 51)
