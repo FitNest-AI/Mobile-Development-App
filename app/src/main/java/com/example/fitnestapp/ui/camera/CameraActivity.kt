@@ -159,7 +159,6 @@ class CameraActivity : AppCompatActivity() {
         val w = bitmap.width
         var x = 0
 
-        Log.d("output__", outputFeature0.size.toString())
         while (x <= 49) {
             if (outputFeature0.get(x + 2) > 0.45) {
                 canvas.drawCircle(
