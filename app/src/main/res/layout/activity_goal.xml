@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@color/grey"
+    android:padding="20dp"
     tools:context=".ui.biodata.GoalActivity">
 
     <TextView
@@ -13,8 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="@string/choose_your_goal_using_fitnest"
-        android:fontFamily="@font/nunito_regular"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,13 +23,13 @@
         android:id="@+id/btnGainMuscle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="@string/gain_muscle"
         android:textSize="12sp"
-        android:fontFamily="@font/nunito_extrabold"
-        android:backgroundTint="@color/white"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView23"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView23" />
 
     <Button
         android:id="@+id/btnLoseWeight"
@@ -36,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/lose_weight"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/lose_weight"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
         app:layout_constraintStart_toEndOf="@id/btnGainMuscle"
@@ -49,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/keep_fit"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/keep_fit"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
         app:layout_constraintStart_toEndOf="@id/btnLoseWeight"
@@ -61,22 +62,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:text="@string/improving_posture"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/improving_posture"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnGainMuscle"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGainMuscle" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="@string/you_can_choose_more_than_one"
         android:textColor="@color/yellow"
-        android:textSize="16sp"
-        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnImprovingPosture" />
 
@@ -85,8 +85,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="@string/what_target_muscles_do_you_want_to_train"
-        android:fontFamily="@font/nunito_regular"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView27" />
 
@@ -95,12 +96,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:text="@string/legs"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/legs"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView24"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView24" />
 
     <Button
         android:id="@+id/btnTriceps"
@@ -108,12 +109,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/triceps"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/triceps"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView24"
-        app:layout_constraintStart_toEndOf="@id/btnLegs"/>
+        app:layout_constraintStart_toEndOf="@id/btnLegs"
+        app:layout_constraintTop_toBottomOf="@id/textView24" />
 
     <Button
         android:id="@+id/btnGlutes"
@@ -121,12 +122,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/glutes"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/glutes"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView24"
-        app:layout_constraintStart_toEndOf="@id/btnTriceps"/>
+        app:layout_constraintStart_toEndOf="@id/btnTriceps"
+        app:layout_constraintTop_toBottomOf="@id/textView24" />
 
     <Button
         android:id="@+id/btnBack"
@@ -134,24 +135,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/back"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/back"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView24"
-        app:layout_constraintStart_toEndOf="@id/btnGlutes"/>
+        app:layout_constraintStart_toEndOf="@id/btnGlutes"
+        app:layout_constraintTop_toBottomOf="@id/textView24" />
 
     <Button
         android:id="@+id/btnChest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:text="@string/chest"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/chest"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnLegs"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLegs" />
 
     <Button
         android:id="@+id/btnAbs"
@@ -159,12 +160,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/abs"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/abs"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnLegs"
-        app:layout_constraintStart_toEndOf="@id/btnChest"/>
+        app:layout_constraintStart_toEndOf="@id/btnChest"
+        app:layout_constraintTop_toBottomOf="@id/btnLegs" />
 
     <Button
         android:id="@+id/btnShoulder"
@@ -172,12 +173,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/shoulder"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/shoulder"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnLegs"
-        app:layout_constraintStart_toEndOf="@id/btnAbs"/>
+        app:layout_constraintStart_toEndOf="@id/btnAbs"
+        app:layout_constraintTop_toBottomOf="@id/btnLegs" />
 
     <Button
         android:id="@+id/btnHand"
@@ -197,14 +198,14 @@
         android:id="@+id/btnBiceps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:text="@string/biceps"
         android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/biceps"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnChest"
-        app:layout_constraintStart_toEndOf="@id/btnHand"/>
+        app:layout_constraintStart_toEndOf="@id/btnHand"
+        app:layout_constraintTop_toBottomOf="@id/btnChest" />
 
     <Button
         android:id="@+id/btnHamstring"
@@ -212,20 +213,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/hamstring"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/hamstring"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnChest"
-        app:layout_constraintStart_toEndOf="@id/btnBiceps"/>
+        app:layout_constraintStart_toEndOf="@id/btnBiceps"
+        app:layout_constraintTop_toBottomOf="@id/btnChest" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="@string/what_kind_of_food_do_you_eat"
-        android:fontFamily="@font/nunito_regular"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView26" />
 
@@ -234,12 +236,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:text="@string/flexitarian"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/flexitarian"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView25"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView25" />
 
     <Button
         android:id="@+id/btnVegan"
@@ -247,12 +249,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/vegan"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/vegan"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView25"
-        app:layout_constraintStart_toEndOf="@id/btnFlexitarian"/>
+        app:layout_constraintStart_toEndOf="@id/btnFlexitarian"
+        app:layout_constraintTop_toBottomOf="@id/textView25" />
 
     <Button
         android:id="@+id/btnVegetarian"
@@ -260,24 +262,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/vegetarian"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/vegetarian"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/textView25"
-        app:layout_constraintStart_toEndOf="@id/btnVegan"/>
+        app:layout_constraintStart_toEndOf="@id/btnVegan"
+        app:layout_constraintTop_toBottomOf="@id/textView25" />
 
     <Button
         android:id="@+id/btnPescetarian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:text="@string/pescetarian"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/pescetarian"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnFlexitarian"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnFlexitarian" />
 
     <Button
         android:id="@+id/btnCarnivore"
@@ -285,22 +287,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
-        android:text="@string/carnivore"
         android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/carnivore"
         android:textSize="12sp"
         app:cornerRadius="@dimen/btn_corner"
-        app:layout_constraintTop_toBottomOf="@id/btnFlexitarian"
-        app:layout_constraintStart_toEndOf="@id/btnPescetarian"/>
+        app:layout_constraintStart_toEndOf="@id/btnPescetarian"
+        app:layout_constraintTop_toBottomOf="@id/btnFlexitarian" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="@string/you_can_choose_more_than_one"
         android:textColor="@color/yellow"
-        android:textSize="16sp"
-        android:fontFamily="@font/nunito_extrabold"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnHand" />
 

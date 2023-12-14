@@ -88,7 +88,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("org.tensorflow:tensorflow-lite-support:0.1.0")
     implementation("org.tensorflow:tensorflow-lite-metadata:0.1.0")
-    implementation("org.tensorflow:tensorflow-lite-gpu:2.3.0")
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.5.0")
+
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
