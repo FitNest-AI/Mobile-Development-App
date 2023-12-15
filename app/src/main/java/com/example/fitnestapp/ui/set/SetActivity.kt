@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitnestapp.databinding.ActivitySetBinding
 import com.example.fitnestapp.ui.camera.CameraActivity
+import com.example.fitnestapp.ui.camera.CameraX
 
 class SetActivity : AppCompatActivity() {
 
