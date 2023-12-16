@@ -7,6 +7,7 @@ import com.example.fitnestapp.data.repo.UserRepo
 import com.example.fitnestapp.di.Injection
 import com.example.fitnestapp.ui.auth.createaccount.CreateAccViewModel
 import com.example.fitnestapp.ui.auth.login.LoginViewModel
+import com.example.fitnestapp.ui.biodata.BiodataViewModel
 
 class UserModelFactory(private val repo: UserRepo) :
     ViewModelProvider.NewInstanceFactory() {
@@ -17,6 +18,9 @@ class UserModelFactory(private val repo: UserRepo) :
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 return LoginViewModel(repo) as T
+            }
+            modelClass.isAssignableFrom(BiodataViewModel::class.java) -> {
+                return BiodataViewModel(repo) as T
             }
 
 

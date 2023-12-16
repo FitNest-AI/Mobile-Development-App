@@ -30,8 +30,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val binding = FragmentHomeBinding.bind(view)
         followBinding = binding
 
-
-
         binding.rvMain.setHasFixedSize(true)
         binding.rvMain.layoutManager = LinearLayoutManager(context)
         val popularSetAdapter = HomeAdapter(list)
