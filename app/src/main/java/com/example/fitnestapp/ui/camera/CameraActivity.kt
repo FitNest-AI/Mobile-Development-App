@@ -100,9 +100,9 @@ class CameraActivity : AppCompatActivity() {
                 val isSame = start.contentEquals(end)
 
                 if (isSame) {
-                    Log.d("Angle","true")
+                    Log.d("AngleResult","true")
                 } else {
-                    Log.d("Angle","false")
+                    Log.d("AngleResult","false")
                 }
 
 
