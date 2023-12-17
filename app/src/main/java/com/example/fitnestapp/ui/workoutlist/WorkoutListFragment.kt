@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
 import com.example.fitnestapp.databinding.FragmentWorkoutListBinding
-import com.example.fitnestapp.model.Workout
+import com.example.fitnestapp.data.model.Workout
 import com.example.fitnestapp.ui.home.HomeAdapter
 
 class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {

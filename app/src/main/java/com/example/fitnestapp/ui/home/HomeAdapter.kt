@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnestapp.R
-import com.example.fitnestapp.model.Workout
+import com.example.fitnestapp.data.model.Workout
 import com.example.fitnestapp.ui.set.SetActivity
 
 class HomeAdapter(var listWorkout: ArrayList<Workout>): RecyclerView.Adapter<HomeAdapter.ListViewHolder>() {

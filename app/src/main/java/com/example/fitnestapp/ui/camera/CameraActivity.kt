@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.fitnestapp.databinding.ActivityCameraBinding
-import com.example.fitnestapp.ml.Detector
 import com.example.fitnestapp.ml.PoseClassifier
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.Interpreter
@@ -63,6 +62,7 @@ class CameraActivity : AppCompatActivity() {
             .build()
 
 
+
         cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
         handlerThread = HandlerThread("videoThread")
         handlerThread.start()
@@ -90,7 +90,12 @@ class CameraActivity : AppCompatActivity() {
 
 
                 val poseDetectorOutput = poseDetector(bitmap)
+                val keypoints = convertToNestedList(poseDetectorOutput)
+                val angles = calculateAngle(keypoints)
 
+
+                Log.d("Angle", angles.toString())
+                Log.d("Keypoints", keypoints.toString())
 
                 val mutable = bitmap.copy(Bitmap.Config.ARGB_8888, true)
                 val canvas = Canvas(mutable)
@@ -113,7 +118,6 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 binding.imageView.setImageBitmap(mutable)
-
 
 
             }
@@ -158,9 +162,7 @@ class CameraActivity : AppCompatActivity() {
         runOnUiThread {
             Log.d("PoseDetectionOutput", outputDataText)
         }
-
         return outputFeature0.floatArray
-
     }
 
     private fun poseClassifier(outputDetection: FloatArray) {
@@ -174,25 +176,34 @@ class CameraActivity : AppCompatActivity() {
             TensorBuffer.createFixedSize(intArrayOf(1, 51), DataType.FLOAT32)
         inputFeature0Pose.loadBuffer(byteBuffer)
 
-        val poseOutputs = modelClassifier.process(inputFeature0Pose)
+        val outputs = modelClassifier.process(inputFeature0Pose)
+        val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+        val output = outputFeature0.floatArray
 
-        val outputFeaature0 = poseOutputs.outputFeature0AsTensorBuffer.floatArray
-        val outputFeature1 = poseOutputs.outputFeature1AsTensorBuffer.floatArray
-        val outputFeature2 = poseOutputs.outputFeature2AsTensorBuffer.floatArray
+        val outputDataText = output.joinToString(separator = ", ", prefix = "[", postfix = "]")
+        runOnUiThread {
+            Log.d("PoseDetectionOutput", outputDataText)
+        }
 
+        Log.d("PoseClassifierOutput", outputDataText)
 
         val feature0Labels =
-            arrayOf("standing", "jumpingjack", "pushup", "situp", "squat", "front", "side")
-        val feature1Labels = arrayOf("front", "side")
-        val feature2Labels = arrayOf(
-            "rightknee",
-            "leftknee",
-            "righthip",
-            "lefthip",
-            "rightelbow",
-            "leftelbow"
-        )
-
+            arrayOf(
+                "tricep pushdown",
+                "squat",
+                "pushup",
+                "leg raises",
+                "situp",
+                "hammer curl",
+                "tricep dips",
+                "barbell biceps curl",
+                "lateral raises",
+                "pull up",
+                "russian twist",
+                "standingSide",
+                "hip thrust",
+                "standingFront"
+            )
 
         fun indexOfMaxValue(arr: FloatArray): Int {
             var maxIndex = -1
@@ -209,43 +220,133 @@ class CameraActivity : AppCompatActivity() {
         }
 
 
-        val maxIndexFeature0 = indexOfMaxValue(outputFeaature0)
-        val maxIndexFeature1 = indexOfMaxValue(outputFeature1)
-        val maxIndexFeature2 = indexOfMaxValue(outputFeature2)
+        val maxIndexFeature0 = indexOfMaxValue(output)
 
-        val outputDataText0 = outputFeaature0.joinToString(
+
+        val outputDataText0 = output.joinToString(
             separator = ", ",
             prefix = "outputFeature0: [",
             postfix = "]"
         )
-        val outputDataText1 = outputFeature1.joinToString(
-            separator = ", ",
-            prefix = "outputFeature1: [",
-            postfix = "]"
-        )
-        val outputDataText2 = outputFeature2.joinToString(
-            separator = ", ",
-            prefix = "outputFeature2: [",
-            postfix = "]"
-        )
+
 
         Log.d(
             "MLData",
             "Output Feature 0: ${feature0Labels[maxIndexFeature0]} = $outputDataText0 "
         )
-        Log.d(
-            "MLData",
-            "Output Feature 1: ${feature1Labels[maxIndexFeature1]} = $outputDataText1 "
-        )
-        Log.d(
-            "MLData",
-            "Output Feature 2: ${feature2Labels[maxIndexFeature2]} = $outputDataText2 "
-        )
 
         binding.feature0Text.text = feature0Labels[maxIndexFeature0]
-        binding.feature1Text.text = feature1Labels[maxIndexFeature1]
-        binding.feature2Text.text = feature2Labels[maxIndexFeature1]
 
+    }
+
+
+    fun calculateAngle(key: List<List<Double>>): List<Double> {
+        val rightWrist = key[10]
+        val leftWrist = key[9]
+
+        val rightElbow = key[8]
+        val leftElbow = key[7]
+
+        val rightShoulder = key[6]
+        val leftShoulder = key[5]
+
+        val rightHip = key[12]
+        val leftHip = key[11]
+
+        val rightKnee = key[14]
+        val leftKnee = key[13]
+
+        val rightAnkle = key[16]
+        val leftAnkle = key[15]
+
+        val angleRightWe = Math.toDegrees(
+            Math.atan2(
+                (rightWrist[1] - rightElbow[1]),
+                (rightWrist[0] - rightElbow[0])
+            )
+        )
+        val angleRightEs = Math.toDegrees(
+            Math.atan2(
+                (rightElbow[1] - rightShoulder[1]),
+                (rightElbow[0] - rightShoulder[0])
+            )
+        )
+        val angleRightSh = Math.toDegrees(
+            Math.atan2(
+                (rightShoulder[1] - rightHip[1]),
+                (rightShoulder[0] - rightHip[0])
+            )
+        )
+        val angleRightHk =
+            Math.toDegrees(Math.atan2((rightHip[1] - rightKnee[1]), (rightHip[0] - rightKnee[0])))
+        val angleRightKa = Math.toDegrees(
+            Math.atan2(
+                (rightKnee[1] - rightAnkle[1]),
+                (rightKnee[0] - rightAnkle[0])
+            )
+        )
+
+        val angleLeftWe =
+            Math.toDegrees(Math.atan2((leftWrist[1] - leftElbow[1]), (leftWrist[0] - leftElbow[0])))
+        val angleLeftEs = Math.toDegrees(
+            Math.atan2(
+                (leftElbow[1] - leftShoulder[1]),
+                (leftElbow[0] - leftShoulder[0])
+            )
+        )
+        val angleLeftSh = Math.toDegrees(
+            Math.atan2(
+                (leftShoulder[1] - leftHip[1]),
+                (leftShoulder[0] - leftHip[0])
+            )
+        )
+        val angleLeftHk =
+            Math.toDegrees(Math.atan2((leftHip[1] - leftKnee[1]), (leftHip[0] - leftKnee[0])))
+        val angleLeftKa =
+            Math.toDegrees(Math.atan2((leftKnee[1] - leftAnkle[1]), (leftKnee[0] - leftAnkle[0])))
+
+        var angles = listOf(
+            angleRightWe,
+            angleRightEs,
+            angleRightSh,
+            angleRightHk,
+            angleRightKa,
+            angleLeftWe,
+            angleLeftEs,
+            angleLeftSh,
+            angleLeftHk,
+            angleLeftKa
+        )
+        angles = angles.map { angle -> if (angle > 0) angle else angle + 180 }
+
+        val rightKneeAngle = Math.abs(angles[3] - angles[4])
+        val leftKneeAngle = Math.abs(angles[8] - angles[9])
+
+        val rightHipAngle = Math.abs(angles[2] - angles[3])
+        val leftHipAngle = Math.abs(angles[7] - angles[8])
+
+        val rightElbowAngle = Math.abs(angles[0] - angles[1])
+        val leftElbowAngle = Math.abs(angles[5] - angles[6])
+
+        return listOf(
+            rightKneeAngle,
+            leftKneeAngle,
+            rightHipAngle,
+            leftHipAngle,
+            rightElbowAngle,
+            leftElbowAngle
+        )
+    }
+
+
+    private fun convertToNestedList(floatArray: FloatArray): List<List<Double>> {
+        val nestedList = mutableListOf<List<Double>>()
+        for (i in floatArray.indices step 2) {
+            val x = floatArray[i].toDouble()
+            val y = floatArray.getOrNull(i + 1)?.toDouble() ?: 0.0
+            nestedList.add(listOf(x, y))
+        }
+        return nestedList
     }
 
 

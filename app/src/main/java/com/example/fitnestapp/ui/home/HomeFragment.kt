@@ -16,7 +16,7 @@ import com.example.fitnestapp.data.local.UserPreference
 import com.example.fitnestapp.data.local.dataStore
 import com.example.fitnestapp.data.remote.response.UserLogin
 import com.example.fitnestapp.databinding.FragmentHomeBinding
-import com.example.fitnestapp.model.Workout
+import com.example.fitnestapp.data.model.Workout
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
