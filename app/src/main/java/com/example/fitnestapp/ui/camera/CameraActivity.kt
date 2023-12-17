@@ -94,6 +94,18 @@ class CameraActivity : AppCompatActivity() {
                 val angles = calculateAngle(keypoints)
 
 
+                val start = arrayOf(0, 0, 130, 130, 360, 360)
+                val end = arrayOf(90, 90, 50, 50, 360, 360)
+
+                val isSame = start.contentEquals(end)
+
+                if (isSame) {
+                    Log.d("Angle","true")
+                } else {
+                    Log.d("Angle","false")
+                }
+
+
                 Log.d("Angle", angles.toString())
                 Log.d("Keypoints", keypoints.toString())
 
