@@ -3,29 +3,37 @@ package com.example.fitnestapp.ui.biodata
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.RadioButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
-import com.example.fitnestapp.data.remote.response.ResponseGoal
+import com.example.fitnestapp.data.local.UserPreference
+import com.example.fitnestapp.data.local.dataStore
+import com.example.fitnestapp.data.remote.response.DietPrefItem
+import com.example.fitnestapp.data.remote.response.GoalItem
+import com.example.fitnestapp.data.remote.response.LevelItem
+import com.example.fitnestapp.data.remote.response.TargetMuscleItem
 import com.example.fitnestapp.databinding.ActivityBiodataBinding
 import com.example.fitnestapp.factory.UserModelFactory
-import com.example.fitnestapp.ui.MainActivity
-import com.example.fitnestapp.ui.auth.createaccount.CreateAccViewModel
 import com.example.fitnestapp.utlis.DatePickerFragment
-import retrofit2.Call
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListener {
+class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListener, ItemChange {
     private lateinit var binding: ActivityBiodataBinding
     private var dueDateMillis: Long = System.currentTimeMillis()
-    private lateinit var gender: String
 
+    private lateinit var userPreferences: UserPreference
+
+    private lateinit var  checkedGoal: ArrayList<String>
+    private lateinit var  checkedLevel: String
+    private lateinit var  checkedTm: ArrayList<String>
+    private lateinit var  checkedDiet: String
     private val viewModel by viewModels<BiodataViewModel> {
         UserModelFactory.getInstance(this)
     }
@@ -34,83 +42,139 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
         binding = ActivityBiodataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        binding.btnNext.setOnClickListener {
-//            val firstname = binding.bioFirstName.text.toString()
-//            val lastname = binding.bioLastName.text.toString()
-//            val dateOfbirth = binding.addTvDueDate.text.toString()
-//            val height = binding.bioHeight.text.toString().toInt()
-//            val weight = binding.bioWeight.text.toString().toInt()
-//
-//
-//            binding.radioGrp.setOnCheckedChangeListener { group, checkedId ->
-//                when (checkedId) {
-//                    R.id.radioMale -> {
-//                        gender = binding.radioMale.text.toString()
-//                    }
-//                    R.id.radioFemale -> {
-//                        gender = binding.radioFemale.text.toString()
-//                    }
-//                }
-//            }
-//
-//            viewModel.insertProfile(firstname,lastname, gender, dateOfbirth, height, weight)
-//            observeSignup()
-//        }
+        userPreferences = UserPreference.getInstance(this.dataStore)
 
-        binding.btnNext.setOnClickListener {
-            startActivity(Intent(this@BiodataActivity, GoalActivity::class.java))
-            finish()
+
+
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvGoal.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvGoal.addItemDecoration(itemDecoration)
+
+        viewModel.goals.observe(this) { listUser ->
+            setGoalData(listUser)
         }
-
-
-        viewModel.goals.observe(this, { goals ->
-            val goalNames = goals.map { it.name }
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, goalNames)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spinner.adapter = adapter
-        })
         viewModel.getGoals()
 
-        viewModel.level.observe(this, { level ->
-            val levelNames = level.map { it.name }
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, levelNames)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spLevel.adapter = adapter
-        })
+        val layoutManagerLevel = LinearLayoutManager(this)
+        binding.rvLevel.layoutManager = layoutManagerLevel
+        val itemDecorationLevel = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvLevel.addItemDecoration(itemDecorationLevel)
+
+        viewModel.level.observe(this) { listLevel ->
+            setLevelData(listLevel)
+        }
         viewModel.getLevel()
 
-        viewModel.targetMuscle.observe(this, { targetMuscle ->
-            val targetMuscle = targetMuscle.map { it.name }
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, targetMuscle)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spTargetMuscle.adapter = adapter
-        })
+        val layoutManagerTm = LinearLayoutManager(this)
+        binding.rvTargetMuscle.layoutManager = layoutManagerTm
+        val itemDecorationTm = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvTargetMuscle.addItemDecoration(itemDecorationTm)
+
+        viewModel.targetMuscle.observe(this) { listTm ->
+            setTargetMuscleData(listTm)
+        }
         viewModel.getTargetMuscle()
 
-        viewModel.dietPref.observe(this, { dietPref ->
-            val dietPref = dietPref.map { it.name }
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dietPref)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spDietPref.adapter = adapter
-        })
+        val layoutManagerDiet = LinearLayoutManager(this)
+        binding.rvDiet.layoutManager = layoutManagerDiet
+        val itemDecorationDiet = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvDiet.addItemDecoration(itemDecorationDiet)
+
+        viewModel.dietPref.observe(this) { listDiet ->
+            setDietData(listDiet)
+        }
         viewModel.getDietPref()
+
+
+
+        binding.btnNext.setOnClickListener {
+
+            val firstName = binding.bioFirstName.text.toString()
+            val lastName = binding.bioLastName.text.toString()
+            val dateOfBirth = binding.addTvDueDate.text.toString()
+            val height = binding.bioHeight.text.toString().toIntOrNull() ?: 0
+            val weight = binding.bioWeight.text.toString().toIntOrNull() ?: 0
+
+            val selectedGenderId = binding.radioGrp.checkedRadioButtonId
+            val gender = when (selectedGenderId) {
+                R.id.radioMale -> "Male"
+                R.id.radioFemale -> "Female"
+                else -> "Other"
+            }
+            val goalId = binding.rvGoal
+
+            viewModel.getSession().observe(this){ user ->
+                if (user.isLogin){
+                    val token = user.token
+                    Log.d("Cobaan",token+firstName+lastName+gender+dateOfBirth+height+weight+checkedGoal.toString()+checkedLevel+checkedTm.toString()+checkedDiet)
+                    viewModel.insertProfile(token,firstName, lastName, gender, dateOfBirth, height, weight, checkedGoal, checkedLevel, checkedTm,checkedDiet)
+
+                    observeProfile()
+                }
+            }
+
+
+
+        }
+
     }
 
-    fun genderOnRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-            val gender: String
-            // Check which radio button was clicked
-            when (binding.radioGrp.getId()) {
-                R.id.radioMale ->
-                    if (checked) {
-                        gender = binding.radioMale.text.toString()
-                    }
-                R.id.radioFemale ->
-                    if (checked) {
-                        gender = binding.radioFemale.text.toString()
-                    }
+    override fun goalsItemChange(arrayList: ArrayList<String>) {
+        checkedGoal = arrayList
+        super.goalsItemChange(arrayList)
+    }
+
+    override fun levelItemChange(string: String) {
+        checkedLevel = string
+        super.levelItemChange(string)
+    }
+
+    override fun targetMuscleItemChange(arrayList: ArrayList<String>) {
+        checkedTm = arrayList
+        super.targetMuscleItemChange(arrayList)
+    }
+
+    override fun dietItemChange(string: String) {
+        checkedDiet = string
+        super.dietItemChange(string)
+    }
+
+    private fun setGoalData(listGoal: List<GoalItem>) {
+        val adapter = GoalAdapter(this,this)
+        adapter.submitList(listGoal)
+        binding.rvGoal.adapter = adapter
+    }
+
+    private fun setLevelData(listLevel: List<LevelItem>) {
+        val adapter = LevelAdapter(this,this)
+        adapter.submitList(listLevel)
+        binding.rvLevel.adapter = adapter
+    }
+
+    private fun setTargetMuscleData(listLevel: List<TargetMuscleItem>) {
+        val adapter = TargetMuscleAdapter(this,this)
+        adapter.submitList(listLevel)
+        binding.rvTargetMuscle.adapter = adapter
+    }
+
+    private fun setDietData(dietPref: List<DietPrefItem>) {
+        val adapter = DietAdapter(this, this)
+        adapter.submitList(dietPref)
+        binding.rvDiet.adapter = adapter
+    }
+
+    private fun observeProfile() {
+        viewModel.insertProfileStatus.observe(this) { isSuccess ->
+            if (isSuccess) {
+                startActivity(Intent(this@BiodataActivity, GoalActivity::class.java))
+            } else {
+                Toast.makeText(this, "Register failed.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.errorMessage.observe(this) { errorMessage ->
+            if (errorMessage != null) {
+                Toast.makeText(this, "Register failed.", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -128,4 +192,5 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
 
         dueDateMillis = calendar.timeInMillis
     }
+
 }

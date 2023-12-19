@@ -58,7 +58,8 @@ class CameraActivity : AppCompatActivity() {
 
 
         imageProcessor = ImageProcessor.Builder()
-            .add(ResizeOp(256, 256, ResizeOp.ResizeMethod.BILINEAR))
+//            .add(ResizeOp(256, 256, ResizeOp.ResizeMethod.BILINEAR))
+            .add(ResizeOp(192, 192, ResizeOp.ResizeMethod.BILINEAR))
             .build()
 
 
@@ -94,15 +95,28 @@ class CameraActivity : AppCompatActivity() {
                 val angles = calculateAngle(keypoints)
 
 
-                val start = arrayOf(0, 0, 130, 130, 360, 360)
-                val end = arrayOf(90, 90, 50, 50, 360, 360)
+                val start = listOf(0, 0, 130, 130, 360, 360)
+                val end = listOf(90, 90, 50, 50, 360, 360)
 
-                val isSame = start.contentEquals(end)
+//                var allAnglesLessThanOrEqual = true
+//
+//                for (i in angles.indices) {
+//                    if (angles[i] > end[i]) {
+//                        allAnglesLessThanOrEqual = false
+//                        break
+//                    }
+//                }
+//
+//                if (allAnglesLessThanOrEqual) {
+//                    Log.d("AngleResult","true")
+//                } else {
+//                    Log.d("AngleResult","false")
+//                }
 
-                if (isSame) {
-                    Log.d("AngleResult","true")
+                if (angles.zip(end).all { it.first <= it.second }) {
+                    Log.d("AngleResult","true+$angles")
                 } else {
-                    Log.d("AngleResult","false")
+                    Log.d("AngleResult","false+$angles")
                 }
 
 
@@ -144,7 +158,7 @@ class CameraActivity : AppCompatActivity() {
 //            addDelegate(detectorGpuDelegate)
 //        }
         val options = Interpreter.Options()
-        val modelDetector = FileUtil.loadMappedFile(context, "detector.tflite")
+        val modelDetector = FileUtil.loadMappedFile(context, "4.tflite")
         val modelClassifier = FileUtil.loadMappedFile(context, "pose_classifier.tflite")
         poseDetectorInterpreter = Interpreter(modelDetector, options)
         poseClassifierInterpreter = Interpreter(modelClassifier, options)
@@ -154,13 +168,19 @@ class CameraActivity : AppCompatActivity() {
 
     private fun poseDetector(bitmap: Bitmap): FloatArray {
 //        modelDetector = Detector.newInstance(this)
-        var tensorImage = TensorImage(DataType.FLOAT32)
+//        var tensorImage = TensorImage(DataType.FLOAT32)
+        var tensorImage = TensorImage(DataType.UINT8)
         tensorImage.load(bitmap)
         tensorImage = imageProcessor.process(tensorImage)
 
+//        val inputFeature0 =
+//            TensorBuffer.createFixedSize(intArrayOf(1, 256, 256, 3), DataType.FLOAT32)
+//        inputFeature0.loadBuffer(tensorImage.buffer)
+
         val inputFeature0 =
-            TensorBuffer.createFixedSize(intArrayOf(1, 256, 256, 3), DataType.FLOAT32)
+            TensorBuffer.createFixedSize(intArrayOf(1, 192, 192, 3), DataType.UINT8)
         inputFeature0.loadBuffer(tensorImage.buffer)
+
         val outputFeature0 =
             TensorBuffer.createFixedSize(
                 intArrayOf(1, 51), DataType.FLOAT32

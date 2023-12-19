@@ -9,6 +9,7 @@ import com.example.fitnestapp.databinding.ActivityOnboardingBinding
 import com.example.fitnestapp.ui.MainActivity
 import com.example.fitnestapp.ui.auth.createaccount.CreateAccountActivity
 import com.example.fitnestapp.ui.auth.login.LoginActivity
+import com.example.fitnestapp.ui.biodata.BiodataActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth

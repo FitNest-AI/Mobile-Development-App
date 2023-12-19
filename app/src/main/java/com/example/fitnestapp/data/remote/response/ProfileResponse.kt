@@ -43,9 +43,6 @@ data class Profile(
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
 
-	@field:SerializedName("conditionId")
-	val conditionId: String? = null,
-
 	@field:SerializedName("dietPrefId")
 	val dietPrefId: String? = null,
 

@@ -20,9 +20,6 @@ class LoginViewModel(private val userRepo: UserRepo): ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _isLogin = MutableLiveData<String?>()
-    val isLogin: LiveData<String?> get() = _isLogin
-
     fun postLogin(email: String, password: String){
         viewModelScope.launch {
             _isLoading.postValue(true)

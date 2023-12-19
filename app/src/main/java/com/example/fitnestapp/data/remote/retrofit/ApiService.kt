@@ -11,6 +11,7 @@ import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
@@ -32,17 +33,17 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/v1/user/profile")
     suspend fun insertProfile(
+        @Header("Authorization") token: String,
         @Field("firstname") firstname: String,
         @Field("lastname") lastname: String,
         @Field("gender") gender: String,
         @Field("dateOfBirth") dateOfBirth: String,
         @Field("height") height: Int,
         @Field("Weight") weight: Int,
-        @Field("goalId") goalId:Int,
-        @Field("levelId") levelId:Int,
-        @Field("targetMuscleId") targetMuscleId:Int,
-        @Field("conditionId") conditionId:Int,
-        @Field("dietPrefId") dietPrefId:Int
+        @Field("goalId") goalId: List<String>,
+        @Field("levelId") levelId:String,
+        @Field("targetMuscleId") targetMuscleId: List<String>,
+        @Field("dietPrefId") dietPrefId:String
     ): ProfileResponse
 
     @GET("api/v1/goal/all")

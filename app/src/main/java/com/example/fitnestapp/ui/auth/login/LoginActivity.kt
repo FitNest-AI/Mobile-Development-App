@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -58,19 +59,33 @@ class LoginActivity : AppCompatActivity() {
             val message = "Login Success"
             if (response.success == true) {
                 CoroutineScope(Dispatchers.Main).launch {
+//                    val saveToken = async(Dispatchers.IO) {
+//                        userPreferences.saveSession(
+//                            UserModel(
+//                                response.data?.email.toString(),
+//                                response.data?.token.toString(),
+//                                false
+//                            )
+//                        )
+//                    }
                     val saveToken = async(Dispatchers.IO) {
-                        userPreferences.saveSession(
-                            UserModel(
-                                response.data?.email.toString(),
-                                response.data?.username.toString(),
-                                response.data?.token.toString(),
-                                true
+                        try {
+                            userPreferences.saveSession(
+                                UserModel(
+                                    response.data?.email.toString(),
+                                    response.data?.token.toString(),
+                                    false
+                                )
+
                             )
-                        )
+                            Log.d("Nyobaan", response.data?.token.toString())
+                        } catch (e: Exception) {
+                            Log.d("Nyobaan", "Error saving token: ${e.message}")
+                        }
                     }
                     saveToken.await()
-
-                    startActivity(Intent(this@LoginActivity, BiodataActivity::class.java))
+                    Toast.makeText(this@LoginActivity,response.data?.token.toString(), Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     finish()
                 }
             }

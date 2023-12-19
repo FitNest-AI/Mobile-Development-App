@@ -29,8 +29,8 @@ class UserRepo(private val apiService: ApiService, private val userPreference: U
         return apiService.register(email, password, confirmPassword)
     }
 
-    suspend fun insertProfile(firstname: String, lastname: String, gender:String, dateOfBirth: String, height: Int, weight: Int, goalId: Int, levelId: Int, targetMuscleId: Int, conditionId: Int,dietPrefId: Int): ProfileResponse {
-        return apiService.insertProfile(firstname,lastname, gender, dateOfBirth, height, weight, goalId, levelId, targetMuscleId, conditionId, dietPrefId)
+    suspend fun insertProfile(token: String,firstname: String, lastname: String, gender:String, dateOfBirth: String, height: Int, weight: Int, goalId: List<String>, levelId: String, targetMuscleId: List<String>,dietPrefId: String): ProfileResponse {
+        return apiService.insertProfile(token, firstname,lastname, gender, dateOfBirth, height, weight, goalId, levelId, targetMuscleId, dietPrefId)
     }
 
     suspend fun getGoals(): Response<ResponseGoal> {
