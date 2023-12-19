@@ -19,9 +19,11 @@ import com.example.fitnestapp.data.remote.response.LevelItem
 import com.example.fitnestapp.data.remote.response.TargetMuscleItem
 import com.example.fitnestapp.databinding.ActivityBiodataBinding
 import com.example.fitnestapp.factory.UserModelFactory
+import com.example.fitnestapp.ui.MainActivity
 import com.example.fitnestapp.utlis.DatePickerFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListener, ItemChange {
@@ -33,7 +35,7 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
     private lateinit var  checkedGoal: ArrayList<String>
     private lateinit var  checkedLevel: String
     private lateinit var  checkedTm: ArrayList<String>
-    private lateinit var  checkedDiet: String
+    private var  checkedDiet: String = ""
     private val viewModel by viewModels<BiodataViewModel> {
         UserModelFactory.getInstance(this)
     }
@@ -43,7 +45,6 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
         setContentView(binding.root)
 
         userPreferences = UserPreference.getInstance(this.dataStore)
-
 
 
         val layoutManager = LinearLayoutManager(this)
@@ -92,14 +93,20 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
 
             val firstName = binding.bioFirstName.text.toString()
             val lastName = binding.bioLastName.text.toString()
-            val dateOfBirth = binding.addTvDueDate.text.toString()
+
+
+            val dateOfBirthString = binding.addTvDueDate.text.toString()
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+            val dateOfBirth: Date = dateFormat.parse(dateOfBirthString)
+
+
             val height = binding.bioHeight.text.toString().toIntOrNull() ?: 0
             val weight = binding.bioWeight.text.toString().toIntOrNull() ?: 0
 
             val selectedGenderId = binding.radioGrp.checkedRadioButtonId
             val gender = when (selectedGenderId) {
-                R.id.radioMale -> "Male"
-                R.id.radioFemale -> "Female"
+                R.id.radioMale -> "man"
+                R.id.radioFemale -> "woman"
                 else -> "Other"
             }
             val goalId = binding.rvGoal
@@ -108,7 +115,8 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
                 if (user.isLogin){
                     val token = user.token
                     Log.d("Cobaan",token+firstName+lastName+gender+dateOfBirth+height+weight+checkedGoal.toString()+checkedLevel+checkedTm.toString()+checkedDiet)
-                    viewModel.insertProfile(token,firstName, lastName, gender, dateOfBirth, height, weight, checkedGoal, checkedLevel, checkedTm,checkedDiet)
+                    viewModel.insertProfile("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmQ3OGE4YjU1YzY3MTdjNDI0ZDcwNyIsImlhdCI6MTcwMjk4MDk0MywiZXhwIjoxNzM0NTE2OTQzfQ.r2tElHYRLCctGfbupP0n8nHr5mR87W_4t8Z-e2KFNAo",
+                        firstName, lastName, gender, dateOfBirth, height, weight, checkedGoal, checkedLevel, checkedTm,checkedDiet)
 
                     observeProfile()
                 }
@@ -122,21 +130,25 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
 
     override fun goalsItemChange(arrayList: ArrayList<String>) {
         checkedGoal = arrayList
+//        Toast.makeText(this,"$checkedGoal", Toast.LENGTH_SHORT).show()
         super.goalsItemChange(arrayList)
     }
 
     override fun levelItemChange(string: String) {
         checkedLevel = string
+//        Toast.makeText(this,"$checkedLevel", Toast.LENGTH_SHORT).show()
         super.levelItemChange(string)
     }
 
     override fun targetMuscleItemChange(arrayList: ArrayList<String>) {
         checkedTm = arrayList
+//        Toast.makeText(this,"$checkedTm", Toast.LENGTH_SHORT).show()
         super.targetMuscleItemChange(arrayList)
     }
 
     override fun dietItemChange(string: String) {
         checkedDiet = string
+//        Toast.makeText(this,"$checkedDiet", Toast.LENGTH_SHORT).show()
         super.dietItemChange(string)
     }
 
@@ -167,7 +179,7 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
     private fun observeProfile() {
         viewModel.insertProfileStatus.observe(this) { isSuccess ->
             if (isSuccess) {
-                startActivity(Intent(this@BiodataActivity, GoalActivity::class.java))
+                startActivity(Intent(this@BiodataActivity, MainActivity::class.java))
             } else {
                 Toast.makeText(this, "Register failed.", Toast.LENGTH_SHORT).show()
             }
@@ -187,7 +199,7 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
     override fun onDialogDateSet(tag: String?, year: Int, month: Int, dayOfMonth: Int) {
         val calendar = Calendar.getInstance()
         calendar.set(year, month, dayOfMonth)
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("yyyy-mm-dd", Locale.getDefault())
         findViewById<TextView>(R.id.add_tv_due_date).text = dateFormat.format(calendar.time)
 
         dueDateMillis = calendar.timeInMillis

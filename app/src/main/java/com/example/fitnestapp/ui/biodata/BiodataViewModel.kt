@@ -18,6 +18,7 @@ import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
+import java.util.Date
 
 class BiodataViewModel(private val repo: UserRepo) : ViewModel() {
 
@@ -26,7 +27,7 @@ class BiodataViewModel(private val repo: UserRepo) : ViewModel() {
     val errorMessage = MutableLiveData<String?>()
     val insertProfileStatus: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun insertProfile(token: String, firstname: String, lastname: String, gender:String, dateOfBirth: String, height: Int, weight: Int, goalId: List<String>, levelId: String, targetMuscleId: List<String>,dietPrefId: String) {
+    fun insertProfile(token: String, firstname: String, lastname: String, gender:String, dateOfBirth: Date, height: Int, weight: Int, goalId: List<String>, levelId: String, targetMuscleId: List<String>,dietPrefId: String) {
         viewModelScope.launch {
             try {
                 val response = repo.insertProfile(token,firstname,lastname, gender, dateOfBirth, height, weight, goalId, levelId, targetMuscleId, dietPrefId)

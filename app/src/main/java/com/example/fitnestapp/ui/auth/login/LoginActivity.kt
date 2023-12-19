@@ -55,10 +55,11 @@ class LoginActivity : AppCompatActivity() {
         }
 
         postLogin()
-        loginViewModel.login.observe(this) { response ->
-            val message = "Login Success"
-            if (response.success == true) {
-                CoroutineScope(Dispatchers.Main).launch {
+        observeLogin()
+//        loginViewModel.login.observe(this) { response ->
+//            val message = "Login Success"
+//            if (response.success == true) {
+//                CoroutineScope(Dispatchers.Main).launch {
 //                    val saveToken = async(Dispatchers.IO) {
 //                        userPreferences.saveSession(
 //                            UserModel(
@@ -68,28 +69,13 @@ class LoginActivity : AppCompatActivity() {
 //                            )
 //                        )
 //                    }
-                    val saveToken = async(Dispatchers.IO) {
-                        try {
-                            userPreferences.saveSession(
-                                UserModel(
-                                    response.data?.email.toString(),
-                                    response.data?.token.toString(),
-                                    false
-                                )
-
-                            )
-                            Log.d("Nyobaan", response.data?.token.toString())
-                        } catch (e: Exception) {
-                            Log.d("Nyobaan", "Error saving token: ${e.message}")
-                        }
-                    }
-                    saveToken.await()
-                    Toast.makeText(this@LoginActivity,response.data?.token.toString(), Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    finish()
-                }
-            }
-        }
+//                    saveToken.await()
+//                    Toast.makeText(this@LoginActivity,response.data?.token.toString(), Toast.LENGTH_SHORT).show()
+//                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+//                    finish()
+//                }
+//            }
+//        }
 
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -107,6 +93,20 @@ class LoginActivity : AppCompatActivity() {
             signIn()
         }
 
+    }
+    private fun observeLogin(){
+        loginViewModel.loginStatus.observe(this) { isSuccess ->
+            if (isSuccess) {
+                Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                Log.d("Login", "$isSuccess")
+                val intent = Intent(this, BiodataActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Login failed.", Toast.LENGTH_SHORT).show()
+            }
+            finish()
+        }
     }
 
     private fun signIn() {
