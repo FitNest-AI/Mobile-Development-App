@@ -10,12 +10,10 @@ import com.example.fitnestapp.data.remote.response.DietPrefItem
 import com.example.fitnestapp.data.remote.response.GoalItem
 import com.example.fitnestapp.data.remote.response.LevelItem
 import com.example.fitnestapp.data.remote.response.ProfileResponse
-import com.example.fitnestapp.data.remote.response.ResponseLogin
 import com.example.fitnestapp.data.remote.response.ResponseRegist
 import com.example.fitnestapp.data.remote.response.TargetMuscleItem
 import com.example.fitnestapp.data.repo.UserRepo
 import com.google.gson.Gson
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.util.Date
@@ -32,6 +30,7 @@ class BiodataViewModel(private val repo: UserRepo) : ViewModel() {
             try {
                 val response = repo.insertProfile(token,firstname,lastname, gender, dateOfBirth, height, weight, goalId, levelId, targetMuscleId, dietPrefId)
                 _profile.postValue(response)
+                insertProfileStatus.postValue(true)
                 Log.d("ApiResponse", "Response: $response")
             } catch (e: HttpException) {
                 val jsonInString = e.response()?.errorBody()?.string()

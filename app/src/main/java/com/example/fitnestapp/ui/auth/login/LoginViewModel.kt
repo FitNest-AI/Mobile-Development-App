@@ -30,7 +30,8 @@ class LoginViewModel(private val userRepo: UserRepo): ViewModel() {
                 val response = userRepo.login(email,password)
                 _isLoading.value = false
                 if (response.success == true){
-                    val token = response.data?.token
+                    val token = response.data?.user?.token
+                    Log.d("Login","$token")
                     saveSession(UserModel(email, token ?: "", true))
                     loginStatus.postValue(true)
                 }else{

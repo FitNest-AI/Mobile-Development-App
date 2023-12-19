@@ -40,7 +40,7 @@ interface ApiService {
         @Field("gender") gender: String,
         @Field("dateOfBirth") dateOfBirth: Date,
         @Field("height") height: Int,
-        @Field("Weight") weight: Int,
+        @Field("weight") weight: Int,
         @Field("goalId") goalId: List<String>,
         @Field("levelId") levelId:String,
         @Field("targetMuscleId") targetMuscleId: List<String>,
