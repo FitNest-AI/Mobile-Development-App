@@ -13,6 +13,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import java.util.Date
 
 interface ApiService {
     @FormUrlEncoded
@@ -37,9 +38,9 @@ interface ApiService {
         @Field("firstname") firstname: String,
         @Field("lastname") lastname: String,
         @Field("gender") gender: String,
-        @Field("dateOfBirth") dateOfBirth: String,
+        @Field("dateOfBirth") dateOfBirth: Date,
         @Field("height") height: Int,
-        @Field("Weight") weight: Int,
+        @Field("weight") weight: Int,
         @Field("goalId") goalId: List<String>,
         @Field("levelId") levelId:String,
         @Field("targetMuscleId") targetMuscleId: List<String>,

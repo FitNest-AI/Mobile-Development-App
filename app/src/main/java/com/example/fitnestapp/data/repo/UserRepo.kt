@@ -14,11 +14,16 @@ import com.example.fitnestapp.data.remote.response.ResponseTargetMuscle
 import com.example.fitnestapp.data.remote.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
+import java.util.Date
 
 class UserRepo(private val apiService: ApiService, private val userPreference: UserPreference) {
 
     fun getSession(): LiveData<UserModel> {
         return userPreference.getSession().asLiveData()
+    }
+
+    suspend fun saveSession(user: UserModel) {
+        userPreference.saveSession(user)
     }
 
     suspend fun login(email: String, password: String): ResponseLogin {
@@ -29,7 +34,7 @@ class UserRepo(private val apiService: ApiService, private val userPreference: U
         return apiService.register(email, password, confirmPassword)
     }
 
-    suspend fun insertProfile(token: String,firstname: String, lastname: String, gender:String, dateOfBirth: String, height: Int, weight: Int, goalId: List<String>, levelId: String, targetMuscleId: List<String>,dietPrefId: String): ProfileResponse {
+    suspend fun insertProfile(token: String, firstname: String, lastname: String, gender:String, dateOfBirth: Date, height: Int, weight: Int, goalId: List<String>, levelId: String, targetMuscleId: List<String>, dietPrefId: String): ProfileResponse {
         return apiService.insertProfile(token, firstname,lastname, gender, dateOfBirth, height, weight, goalId, levelId, targetMuscleId, dietPrefId)
     }
 
