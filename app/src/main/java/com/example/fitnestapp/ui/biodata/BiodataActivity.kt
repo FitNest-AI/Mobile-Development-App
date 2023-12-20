@@ -46,7 +46,6 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
 
         userPreferences = UserPreference.getInstance(this.dataStore)
 
-
         val layoutManager = LinearLayoutManager(this)
         binding.rvGoal.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)

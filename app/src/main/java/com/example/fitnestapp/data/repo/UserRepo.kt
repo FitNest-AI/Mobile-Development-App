@@ -55,8 +55,8 @@ class UserRepo(private val apiService: ApiService, private val userPreference: U
         return apiService.getDietPref()
     }
 
-    suspend fun getFood(): Response<ResponseFood> {
-        return apiService.getFood()
+    suspend fun getFood(workoutName : String, page : Int): Response<ResponseFood> {
+        return apiService.getFood(workoutName, page)
     }
 
     companion object {

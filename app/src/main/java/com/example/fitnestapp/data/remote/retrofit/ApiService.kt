@@ -14,6 +14,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 import java.util.Date
 
 interface ApiService {
@@ -61,6 +62,9 @@ interface ApiService {
     suspend fun getDietPref() : Response<ResponseDietPref>
 
     @GET("/?q={{workout_name}}&page={{page}}")
-    suspend fun getFood() : Response<ResponseFood>
+    suspend fun getFood(
+        @Path("workoutName") workoutName: String,
+        @Path("page") page: Int
+    ) : Response<ResponseFood>
 
 }
