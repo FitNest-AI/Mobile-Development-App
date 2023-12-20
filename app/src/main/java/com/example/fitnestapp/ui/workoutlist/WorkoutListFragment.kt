@@ -17,7 +17,7 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
 
     private var followBinding: FragmentWorkoutListBinding? = null
 
-    lateinit var listWorkoutSet: HomeAdapter
+    private lateinit var listWorkoutSet: HomeAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentWorkoutListBinding.bind(view)
