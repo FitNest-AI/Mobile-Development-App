@@ -14,7 +14,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.Query
 import java.util.Date
 
 interface ApiService {
@@ -44,27 +44,32 @@ interface ApiService {
         @Field("height") height: Int,
         @Field("weight") weight: Int,
         @Field("goalId") goalId: List<String>,
-        @Field("levelId") levelId:String,
+        @Field("levelId") levelId: String,
         @Field("targetMuscleId") targetMuscleId: List<String>,
-        @Field("dietPrefId") dietPrefId:String
+        @Field("dietPrefId") dietPrefId: String
     ): ProfileResponse
 
     @GET("api/v1/goal/all")
-    suspend fun getGoal() : Response<ResponseGoal>
+    suspend fun getGoal(): Response<ResponseGoal>
 
     @GET("api/v1/level/all")
-    suspend fun getLevel() : Response<ResponseLevel>
+    suspend fun getLevel(): Response<ResponseLevel>
 
     @GET("api/v1/target-muscle/all")
-    suspend fun getTargetMuscle() : Response<ResponseTargetMuscle>
+    suspend fun getTargetMuscle(): Response<ResponseTargetMuscle>
 
     @GET("api/v1/diet-pref/all")
-    suspend fun getDietPref() : Response<ResponseDietPref>
+    suspend fun getDietPref(): Response<ResponseDietPref>
 
-    @GET("/?q={{workout_name}}&page={{page}}")
+//    @GET("/?q={{workout_name}}&page={{page}}")
+//    suspend fun getFood(
+//        @Path("workoutName") workoutName: String,
+//        @Path("page") page: Int
+//    ) : Response<ResponseFood>
+
+    @GET("/")
     suspend fun getFood(
-        @Path("workoutName") workoutName: String,
-        @Path("page") page: Int
-    ) : Response<ResponseFood>
-
+        @Query("q") workoutName: String,
+        @Query("page") page: Int
+    ): Response<ResponseFood>
 }

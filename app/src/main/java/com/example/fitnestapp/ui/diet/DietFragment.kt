@@ -25,8 +25,9 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
 
         viewModel.food.observe(viewLifecycleOwner) { foodItems ->
             val diets =
-                foodItems?.map { convertFoodItemToDiet(it)
-                }?.let{ ArrayList(it) } ?: arrayListOf()
+                foodItems?.map {
+                    convertFoodItemToDiet(it)
+                }?.let { ArrayList(it) } ?: arrayListOf()
 
             binding.rvDiet.setHasFixedSize(true)
             binding.rvDiet.layoutManager = LinearLayoutManager(context)
@@ -42,7 +43,7 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
 
     private fun convertFoodItemToDiet(foodItem: RecommendationItem): Diet {
         return Diet(
-            name = foodItem.label!!,
+            name = foodItem.label.toString(),
             calorie = foodItem.calories.toString(),
             fat = foodItem.fat.toString(),
             carbohydrate = foodItem.carbs.toString(),
@@ -51,15 +52,15 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
     }
 
 
-//    private fun getListDiet(): ArrayList<Diet> {
-//        val name = resources.getStringArray(R.array.data_diet_name)
-//        val calorie = resources.getStringArray(R.array.data_diet_calorie)
-//        val fat = resources.getStringArray(R.array.data_diet_fat)
-//        val carbohydrate = resources.getStringArray(R.array.data_diet_carbohydrate)
-//        val protein = resources.getStringArray(R.array.data_diet_protein)
+//    private fun getListDiet(foodItem: RecommendationItem): ArrayList<Diet> {
+//        val label = foodItem.label.toString()
+//        val calorie = foodItem.calories
+//        val fat = foodItem.fat
+//        val carbohydrate = foodItem.carbs
+//        val protein = foodItem.protein
 //        val listDiet = ArrayList<Diet>()
-//        for (i in name.indices) {
-//            val diet = Diet(name[i], calorie[i], fat[i], carbohydrate[i], protein[i])
+//        for (i in label.indices) {
+//            val diet = Diet(label[i], calorie[i], fat[i], carbohydrate[i], protein[i])
 //            listDiet.add(diet)
 //        }
 //        return listDiet
