@@ -104,7 +104,7 @@ class BiodataViewModel(private val repo: UserRepo) : ViewModel() {
         }
     }
 
-     fun saveSession(user: UserModel) {
+    fun saveSession(user: UserModel) {
         viewModelScope.launch {
             repo.saveSession(user)
         }

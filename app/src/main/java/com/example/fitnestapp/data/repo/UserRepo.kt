@@ -38,6 +38,10 @@ class UserRepo(private val apiService: ApiService, private val userPreference: U
         return apiService.insertProfile(token, firstname,lastname, gender, dateOfBirth, height, weight, goalId, levelId, targetMuscleId, dietPrefId)
     }
 
+    suspend fun getUserProfile() : ProfileResponse {
+        return apiService.getUserProfile()
+    }
+
     suspend fun getGoals(): Response<ResponseGoal> {
         return apiService.getGoal()
     }

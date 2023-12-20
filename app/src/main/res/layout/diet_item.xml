@@ -94,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
                         android:text=": 132.0 cal"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/yellow" />
 
                     <TextView
                         android:id="@+id/fatDiet"
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
                         android:text=": 1.82 g"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/yellow" />
 
                     <TextView
                         android:id="@+id/carboDiet"
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
                         android:text=": 29.29 g"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/yellow" />
 
                     <TextView
                         android:id="@+id/proteinDiet"
@@ -118,7 +118,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
                         android:text=": 4.96 g"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/yellow" />
                 </LinearLayout>
 
             </LinearLayout>

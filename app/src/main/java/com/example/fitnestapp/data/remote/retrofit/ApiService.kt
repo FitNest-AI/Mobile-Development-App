@@ -47,8 +47,14 @@ interface ApiService {
         @Field("dietPrefId") dietPrefId:String
     ): ProfileResponse
 
+    @GET("api/v1/user/profile/")
+    suspend fun getUserProfile(
+    ): ProfileResponse
+
     @GET("api/v1/goal/all")
     suspend fun getGoal() : Response<ResponseGoal>
+
+
 
     @GET("api/v1/level/all")
     suspend fun getLevel() : Response<ResponseLevel>

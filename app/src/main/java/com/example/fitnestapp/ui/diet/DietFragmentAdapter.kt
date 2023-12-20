@@ -14,7 +14,7 @@ import com.example.fitnestapp.data.model.Workout
 import com.example.fitnestapp.ui.home.HomeAdapter
 import com.example.fitnestapp.ui.set.SetActivity
 
-class DietFragmentAdapter(var listDiet: ArrayList<Diet>): RecyclerView.Adapter<DietFragmentAdapter.ListViewHolder>() {
+class DietFragmentAdapter(private var listDiet: ArrayList<Diet>): RecyclerView.Adapter<DietFragmentAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
