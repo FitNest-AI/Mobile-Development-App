@@ -13,6 +13,12 @@
         android:title="@string/workout_list" />
 
     <item
+        android:id="@+id/navigation_diet"
+        android:icon="@drawable/restaurant"
+        android:iconTint="@color/menu_color"
+        android:title="@string/diet" />
+
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/profile"
         android:iconTint="@color/menu_color"

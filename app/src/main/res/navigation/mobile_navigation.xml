@@ -16,8 +16,13 @@
         android:id="@+id/navigation_workoutList"
         android:name="com.example.fitnestapp.ui.workoutlist.WorkoutListFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_workout_list" />
 
+    <fragment
+        android:id="@+id/navigation_diet"
+        android:name="com.example.fitnestapp.ui.diet.DietFragment"
+        android:label="@string/diet"
+        tools:layout="@layout/fragment_diet" />
 
     <fragment
         android:id="@+id/navigation_profile"

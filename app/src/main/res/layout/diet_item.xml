@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView32"
+                android:id="@+id/nameDiet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView32">
+                app:layout_constraintTop_toBottomOf="@+id/nameDiet">
 
                 <LinearLayout
                     android:layout_width="100dp"
@@ -89,7 +89,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView38"
+                        android:id="@+id/caloriDiet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
@@ -97,7 +97,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/textView39"
+                        android:id="@+id/fatDiet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
@@ -105,7 +105,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/textView40"
+                        android:id="@+id/carboDiet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
@@ -113,7 +113,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/textView41"
+                        android:id="@+id/proteinDiet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_semibold"
@@ -131,7 +131,8 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/linearLayout3"
                 app:srcCompat="@drawable/jagung"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="0dp"
+                tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

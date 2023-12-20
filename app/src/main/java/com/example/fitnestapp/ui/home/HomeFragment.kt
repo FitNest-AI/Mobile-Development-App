@@ -17,6 +17,7 @@ import com.example.fitnestapp.data.local.dataStore
 import com.example.fitnestapp.data.remote.response.UserLogin
 import com.example.fitnestapp.databinding.FragmentHomeBinding
 import com.example.fitnestapp.data.model.Workout
+import com.example.fitnestapp.ui.workoutlist.WorkoutListFragment
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -36,6 +37,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.rvMain.adapter = popularSetAdapter
 
         list.addAll(getListWorkout())
+
+        binding.layoutDiscover.setOnClickListener{
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, WorkoutListFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
     }
 
     private fun getListWorkout(): ArrayList<Workout> {

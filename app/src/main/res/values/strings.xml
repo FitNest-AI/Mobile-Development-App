@@ -69,7 +69,7 @@
         <item>Push Up</item>
         <item>Sit Up</item>
         <item>Pull Up</item>
-        <item>Pistol Squad</item>
+        <item>Pistol Squat</item>
         <item>Lunges</item>
         <item>Squat</item>
         <item>Crunch</item>
@@ -78,15 +78,27 @@
     </string-array>
 
     <string-array name="data_exercise_time">
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
-        <item>10.20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+        <item>1x20</item>
+    </string-array>
+
+    <string-array name="data_exercise_description">
+        <item>The push-up is a common calisthenics exercise beginning from the prone position. By raising and lowering the body using the arms</item>
+        <item>The sit-up is an abdominal endurance training exercise to strengthen, tighten and tone the abdominal muscles. It is similar to a crunch, but sit-ups have a fuller range of motion and condition additional muscles.</item>
+        <item>A pull-up is an upper-body strength exercise. The pull-up is a closed-chain movement where the body is suspended by the hands, gripping a bar or other implement at a distance typically wider than shoulder-width, and pulled up.</item>
+        <item>The pistol squat is a variation of the single-leg squat. Perform pistol squats by lowering your body on one leg with your arms extended in front of you to counterbalance your bodyweight.</item>
+        <item>A lunge can refer to any position of the human body where one leg is positioned forward with knee bent and foot flat on the ground while the other leg is positioned behind</item>
+        <item>A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up.</item>
+        <item>The crunch movement is almost like sit-ups. However, this movement only lifts the upper body, namely the head and shoulders. Apart from the abdominal muscles, crunches can also train and strengthen the muscles of the shoulders, arms, buttocks and legs.</item>
+        <item>The plank is an isometric core strength exercise that involves maintaining a position similar to a push-up for the maximum possible time.</item>
+        <item>A jumping jack, also known as a star jump and called a side-straddle hop in the US military, is a physical jumping exercise performed by jumping to a position with the legs spread wide and the hands going overhead, sometimes in a clap, and then returning to a position with the feet together and the arms at the sides.</item>
     </string-array>
 
 
@@ -141,6 +153,7 @@
     <string name="you_can_choose_more_than_one">You can choose more than one</string>
     <string name="save">Save</string>
     <string name="choose_your_goal_using_fitnest">Choose your goal using FitNest</string>
+    <string name="diet">Diet</string>
 
 
 </resources>

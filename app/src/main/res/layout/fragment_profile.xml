@@ -12,6 +12,18 @@
         android:layout_width="match_parent"
         android:background="@color/red"
         android:layout_height="200dp" >
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="17dp"
+            android:backgroundTint="@color/grey"
+            android:textColor="@color/white"
+            android:text="Logout" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -41,6 +53,7 @@
             android:textColor="@color/yellow"
             android:textSize="13sp"
             android:fontFamily="@font/inter_bold"/>
+
     </RelativeLayout>
 
     <ImageView

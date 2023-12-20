@@ -24,6 +24,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,6 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_set"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
