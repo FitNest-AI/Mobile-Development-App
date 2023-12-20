@@ -30,6 +30,7 @@ class BiodataViewModel(private val repo: UserRepo) : ViewModel() {
             try {
                 val response = repo.insertProfile(token,firstname,lastname, gender, dateOfBirth, height, weight, goalId, levelId, targetMuscleId, dietPrefId)
                 _profile.postValue(response)
+                saveSession(UserModel("", token, true, isInsertProfile = true))
                 insertProfileStatus.postValue(true)
                 Log.d("ApiResponse", "Response: $response")
             } catch (e: HttpException) {
@@ -103,7 +104,15 @@ class BiodataViewModel(private val repo: UserRepo) : ViewModel() {
         }
     }
 
+     fun saveSession(user: UserModel) {
+        viewModelScope.launch {
+            repo.saveSession(user)
+        }
+    }
+
     fun getSession(): LiveData<UserModel> {
         return repo.getSession()
     }
+
+
 }

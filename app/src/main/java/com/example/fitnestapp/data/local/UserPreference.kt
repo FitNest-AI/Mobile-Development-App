@@ -1,6 +1,7 @@
 package com.example.fitnestapp.data.local
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -21,7 +22,10 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[TOKEN_KEY] = user.token
             preferences[EMAIL_KEY] = user.email
             preferences[IS_LOGIN_KEY] = true
+            preferences[IS_INSERT_PROFILE] = true
         }
+
+        Log.d("ISNSD", "isInsert: ${user.isInsertProfile}")
     }
 
     fun getSession(): Flow<UserModel> {
@@ -30,13 +34,13 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 preferences[EMAIL_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false,
-
-
-            )
+                preferences[IS_INSERT_PROFILE] ?: false,
+                )
         }
+
     }
 
-    suspend fun logout(){
+    suspend fun logout() {
         dataStore.edit { preferences ->
             preferences.clear()
         }
@@ -54,6 +58,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val EMAIL_KEY = stringPreferencesKey("email")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
+        private val IS_INSERT_PROFILE = booleanPreferencesKey("isInsertProfile")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {

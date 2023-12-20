@@ -43,8 +43,14 @@ class OnboardingActivity : AppCompatActivity() {
     private suspend fun updateUi(currentUser: FirebaseUser?) {
         val user = userPreference.getSession().first()
         if (currentUser != null || user.isLogin) {
-            startActivity(Intent(this@OnboardingActivity, BiodataActivity::class.java))
-            finish()
+            if (!user.isInsertProfile) {
+                startActivity(Intent(this@OnboardingActivity, BiodataActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
+                finish()
+
+            }
         }
     }
 

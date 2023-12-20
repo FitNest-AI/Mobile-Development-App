@@ -32,7 +32,7 @@ class LoginViewModel(private val userRepo: UserRepo): ViewModel() {
                 if (response.success == true){
                     val token = response.data?.user?.token
                     Log.d("Login","$token")
-                    saveSession(UserModel(email, token ?: "", true))
+                    saveSession(UserModel(email, token ?: "", true, isInsertProfile = false))
                     loginStatus.postValue(true)
                 }else{
                     loginStatus.postValue(false)

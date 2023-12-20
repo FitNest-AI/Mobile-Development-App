@@ -112,19 +112,17 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
             val goalId = binding.rvGoal
 
             viewModel.getSession().observe(this){ user ->
-                if (user.isLogin){
+                if (!user.isInsertProfile){
                     val token = user.token
                     Log.d("TokenUnik", token)
-                    Log.d("Cobaan",token+firstName+lastName+gender+dateOfBirth+height+weight+checkedGoal.toString()+checkedLevel+checkedTm.toString()+checkedDiet)
-                    viewModel.insertProfile(token,
-                        firstName, lastName, gender, dateOfBirth, height, weight, checkedGoal, checkedLevel, checkedTm,checkedDiet)
-
-                    observeProfile()
+//                    Log.d("Cobaan",token+firstName+lastName+gender+dateOfBirth+height+weight+checkedGoal.toString()+checkedLevel+checkedTm.toString()+checkedDiet)
+                    viewModel.insertProfile(token, firstName, lastName, gender, dateOfBirth, height, weight, checkedGoal, checkedLevel, checkedTm,checkedDiet)
+//                    observeProfile()
+                } else {
+                    startActivity(Intent(this@BiodataActivity, MainActivity::class.java))
                 }
+                Log.d("IsInser", user.isInsertProfile.toString())
             }
-
-
-
         }
 
     }
