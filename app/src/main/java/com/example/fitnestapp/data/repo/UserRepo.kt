@@ -6,6 +6,7 @@ import com.example.fitnestapp.data.local.UserModel
 import com.example.fitnestapp.data.local.UserPreference
 import com.example.fitnestapp.data.remote.response.ProfileResponse
 import com.example.fitnestapp.data.remote.response.ResponseDietPref
+import com.example.fitnestapp.data.remote.response.ResponseFood
 import com.example.fitnestapp.data.remote.response.ResponseGoal
 import com.example.fitnestapp.data.remote.response.ResponseLevel
 import com.example.fitnestapp.data.remote.response.ResponseLogin
@@ -53,6 +54,11 @@ class UserRepo(private val apiService: ApiService, private val userPreference: U
     suspend fun getDietPref(): Response<ResponseDietPref> {
         return apiService.getDietPref()
     }
+
+    suspend fun getFood(): Response<ResponseFood> {
+        return apiService.getFood()
+    }
+
     companion object {
         @Volatile
         private var instance: UserRepo? = null

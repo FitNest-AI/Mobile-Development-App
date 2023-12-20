@@ -1,22 +1,15 @@
 package com.example.fitnestapp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnestapp.R
-import com.example.fitnestapp.data.local.UserModel
 import com.example.fitnestapp.data.local.UserPreference
-import com.example.fitnestapp.data.local.dataStore
-import com.example.fitnestapp.data.remote.response.UserLogin
-import com.example.fitnestapp.databinding.FragmentHomeBinding
 import com.example.fitnestapp.data.model.Workout
+import com.example.fitnestapp.databinding.FragmentHomeBinding
+import com.example.fitnestapp.ui.createset.CreateSetActivity
 import com.example.fitnestapp.ui.workoutlist.WorkoutListFragment
 
 
@@ -38,12 +31,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         list.addAll(getListWorkout())
 
-        binding.layoutDiscover.setOnClickListener{
+        binding.layoutDiscover.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, WorkoutListFragment())
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
+
+        binding.layoutCreateSet.setOnClickListener {
+            startActivity(Intent(requireContext(), CreateSetActivity::class.java))
+        }
+
     }
 
     private fun getListWorkout(): ArrayList<Workout> {
@@ -57,7 +55,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         return listWorkout
     }
-
 
 
 }
