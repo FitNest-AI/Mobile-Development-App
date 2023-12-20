@@ -11,14 +11,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.fitnestapp.R
-import com.example.fitnestapp.data.local.UserModel
 import com.example.fitnestapp.data.local.UserPreference
 import com.example.fitnestapp.data.local.dataStore
 import com.example.fitnestapp.databinding.ActivityLoginBinding
 import com.example.fitnestapp.factory.UserModelFactory
 import com.example.fitnestapp.ui.MainActivity
 import com.example.fitnestapp.ui.biodata.BiodataActivity
-import com.example.fitnestapp.ui.home.HomeFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -28,9 +26,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -75,8 +70,12 @@ class LoginActivity : AppCompatActivity() {
             signIn()
         }
 
+
+
+
     }
-    private fun observeLogin(){
+
+    private fun observeLogin() {
         loginViewModel.loginStatus.observe(this) { isSuccess ->
             if (isSuccess) {
                 Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
@@ -86,24 +85,28 @@ class LoginActivity : AppCompatActivity() {
                     val session = userPreferences.getSession().first()
                     if (session.isInsertProfile) {
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                     } else {
                         val intent = Intent(this@LoginActivity, BiodataActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                     }
-
                     Log.d("LoginisInsert", "isInsert: ${session.isInsertProfile}")
                 }
 
-//                val intent = Intent(this, BiodataActivity::class.java)
-//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-//                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Login failed.", Toast.LENGTH_SHORT).show()
+                finish()
             }
-            finish()
+        }
+
+        loginViewModel.errorMessage.observe(this) { errorMessage ->
+            if (errorMessage != null) {
+                binding.tvWarning.visibility = View.VISIBLE
+                binding.tvWarning.setTextColor(resources.getColor(R.color.red))
+                binding.tvWarning.text = errorMessage
+            }
         }
     }
 
@@ -120,7 +123,7 @@ class LoginActivity : AppCompatActivity() {
                     val account = task.getResult(ApiException::class.java)!!
                     Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
-                } catch (e : ApiException) {
+                } catch (e: ApiException) {
                     Log.w("TAG", "Google sign in failed", e)
                 }
             }
