@@ -114,7 +114,7 @@ class BiodataActivity : AppCompatActivity(), DatePickerFragment.DialogDateListen
             viewModel.getSession().observe(this){ user ->
                 if (user.isLogin){
                     val token = user.token
-                    Log.d("TokenUnik","$token")
+                    Log.d("TokenUnik", token)
                     Log.d("Cobaan",token+firstName+lastName+gender+dateOfBirth+height+weight+checkedGoal.toString()+checkedLevel+checkedTm.toString()+checkedDiet)
                     viewModel.insertProfile(token,
                         firstName, lastName, gender, dateOfBirth, height, weight, checkedGoal, checkedLevel, checkedTm,checkedDiet)

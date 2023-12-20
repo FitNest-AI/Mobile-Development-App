@@ -88,6 +88,39 @@
         <item>10.20</item>
         <item>10.20</item>
     </string-array>
+
+
+    <string-array name="data_diet_name">
+        <item>Jagung</item>
+        <item>Kacang</item>
+    </string-array>
+
+    <string-array name="data_diet_calorie">
+        <item>132.0 cal</item>
+        <item>117.0 cal</item>
+    </string-array>
+
+    <string-array name="data_diet_fat">
+        <item>1.82 g</item>
+        <item>0.68 g</item>
+    </string-array>
+
+    <string-array name="data_diet_carbohydrate">
+        <item>29.29 g</item>
+        <item>20.97 g</item>
+    </string-array>
+
+    <string-array name="data_diet_protein">
+        <item>4.96 g</item>
+        <item>7.86 Cal</item>
+    </string-array>
+
+
+
+
+
+
+
     <string name="title_activity_camera_component">CameraComponent</string>
     <string name="gain_muscle">Gain Muscle</string>
     <string name="keep_fit">Keep Fit</string>
