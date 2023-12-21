@@ -6,11 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
 import com.example.fitnestapp.data.model.Exercise
-import com.example.fitnestapp.data.model.Workout
 import com.example.fitnestapp.databinding.ActivitySetBinding
 import com.example.fitnestapp.ui.camera.CameraActivity
-import com.example.fitnestapp.ui.camera.CameraX
-import com.example.fitnestapp.ui.home.HomeAdapter
 
 class SetActivity : AppCompatActivity() {
 
@@ -41,7 +38,8 @@ class SetActivity : AppCompatActivity() {
         val dataDesc = resources.getStringArray(R.array.data_exercise_description)
         val listSet = ArrayList<Exercise>()
         for (i in dataName.indices) {
-            val set = Exercise(dataName[i], dataTime[i], dataImage.getResourceId(i, -1), dataDesc[i])
+            val set =
+                Exercise(dataName[i], dataTime[i], dataImage.getResourceId(i, -1), dataDesc[i])
             listSet.add(set)
         }
         return listSet

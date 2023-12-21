@@ -69,7 +69,6 @@ interface ApiService {
 
     @GET("/")
     suspend fun getFood(
-        @Query("q") workoutName: String,
-        @Query("page") page: Int
-    ): Response<ResponseFood>
+        @Header("Authorization") token: String,
+        ): Response<ResponseFood>
 }

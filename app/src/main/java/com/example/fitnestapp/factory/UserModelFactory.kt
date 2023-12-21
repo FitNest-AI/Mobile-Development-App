@@ -17,16 +17,14 @@ class UserModelFactory(private val repo: UserRepo) :
             modelClass.isAssignableFrom(CreateAccViewModel::class.java) -> {
                 CreateAccViewModel(repo) as T
             }
+
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 return LoginViewModel(repo) as T
             }
+
             modelClass.isAssignableFrom(BiodataViewModel::class.java) -> {
                 return BiodataViewModel(repo) as T
             }
-            modelClass.isAssignableFrom(DietViewModel::class.java) -> {
-                return DietViewModel(repo) as T
-            }
-
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

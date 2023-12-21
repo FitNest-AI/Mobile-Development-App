@@ -10,13 +10,14 @@ import com.example.fitnestapp.R
 import com.example.fitnestapp.data.model.Diet
 import com.example.fitnestapp.data.remote.response.RecommendationItem
 import com.example.fitnestapp.databinding.FragmentDietBinding
+import com.example.fitnestapp.factory.FoodModelFactory
 import com.example.fitnestapp.factory.UserModelFactory
 
 class DietFragment : Fragment(R.layout.fragment_diet) {
 
     private lateinit var binding: FragmentDietBinding
     private val viewModel by viewModels<DietViewModel> {
-        UserModelFactory.getInstance(this.requireContext())
+        FoodModelFactory.getInstance(this.requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,7 +37,10 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
 
         }
 
-        viewModel.getFood()
+//        viewModel.getSession().observe(viewLifecycleOwner) { userModel ->
+//            viewModel.getFood(userModel.token)
+//        }
+            viewModel.getFood("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2UxY2FkZWM1ODRiOGMzMjNmODc2MCIsImlhdCI6MTcwMzAwMjE1OCwiZXhwIjoxNzM0NTM4MTU4fQ.IqXxs49aaWsjZkJhxM12IcjJTRmCQAY7xgTtWA4XWMw")
 
     }
 
