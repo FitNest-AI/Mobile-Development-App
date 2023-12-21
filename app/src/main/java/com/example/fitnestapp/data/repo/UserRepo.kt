@@ -2,6 +2,7 @@ package com.example.fitnestapp.data.repo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
+import com.example.fitnestapp.data.local.EditUserRequest
 import com.example.fitnestapp.data.local.UserModel
 import com.example.fitnestapp.data.local.UserPreference
 import com.example.fitnestapp.data.remote.response.ProfileResponse
@@ -11,9 +12,12 @@ import com.example.fitnestapp.data.remote.response.ResponseLevel
 import com.example.fitnestapp.data.remote.response.ResponseLogin
 import com.example.fitnestapp.data.remote.response.ResponseRegist
 import com.example.fitnestapp.data.remote.response.ResponseTargetMuscle
+import com.example.fitnestapp.data.remote.response.ResponseUser
+import com.example.fitnestapp.data.remote.response.User
 import com.example.fitnestapp.data.remote.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
+import java.io.IOException
 import java.util.Date
 
 class UserRepo(private val apiService: ApiService, private val userPreference: UserPreference) {
@@ -40,6 +44,14 @@ class UserRepo(private val apiService: ApiService, private val userPreference: U
 
     suspend fun getUserProfile() : ProfileResponse {
         return apiService.getUserProfile()
+    }
+
+    suspend fun getUser(): ResponseUser {
+        return apiService.getUser().body() ?: throw IOException("Error fetching user data")
+    }
+
+    suspend fun updateUser(request: EditUserRequest): ResponseUser {
+        return apiService.updateUser(request).body() ?: throw IOException("Error updating user data")
     }
 
     suspend fun getGoals(): Response<ResponseGoal> {
