@@ -13,7 +13,7 @@ class WorkoutModelFactory(private val repo: WorkoutRepo) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(DietViewModel::class.java) -> {
+            modelClass.isAssignableFrom(WorkoutViewModel::class.java) -> {
                 WorkoutViewModel(repo) as T
             }
 

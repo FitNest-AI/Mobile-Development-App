@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fitnestapp.data.local.UserModel
 import com.example.fitnestapp.data.remote.response.RecommendationItem
+import com.example.fitnestapp.data.remote.response.ResponseFood
 import com.example.fitnestapp.data.remote.response.ResponseRegist
 import com.example.fitnestapp.data.repo.FoodRepo
 import com.google.gson.Gson
@@ -31,9 +32,7 @@ class DietViewModel(private val repo: FoodRepo) : ViewModel() {
                 }
             } catch (e: HttpException) {
                 val jsonInString = e.response()?.errorBody()?.string()
-                val errorBody = Gson().fromJson(jsonInString, ResponseRegist::class.java)
-                errorMessage.postValue(errorBody.message)
-                Log.e("Insert Profile Error", "HTTP Exception: ${e.message}", e)
+                val errorBody = Gson().fromJson(jsonInString, ResponseFood::class.java)
             } catch (e: Exception) {
                 errorMessage.postValue("Terjadi kesalahan saat memasukan dataa")
                 Log.e("Insert Profile Error", "General Exception: ${e.message}", e)
