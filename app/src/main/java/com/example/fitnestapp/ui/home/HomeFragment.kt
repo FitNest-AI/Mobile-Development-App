@@ -47,14 +47,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.getWorkout()
 
         viewModel.workout.observe(viewLifecycleOwner) { workoutItems ->
-            val diets =
-                workoutItems?.map {
-                    convertFoodItemToDiet(it)
-                }?.let { ArrayList(it) } ?: arrayListOf()
+
 
             binding.rvMain.setHasFixedSize(true)
             binding.rvMain.layoutManager = LinearLayoutManager(context)
-            listWorkoutSet = HomeAdapter(diets)
+            listWorkoutSet = HomeAdapter(workoutItems)
             binding.rvMain.adapter = listWorkoutSet
         }
 

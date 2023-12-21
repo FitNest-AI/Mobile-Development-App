@@ -10,6 +10,6 @@ data class Workout(
 //    val desc: String,
 //    val day: String,
 //    val rest: Int,
-//    val moveset: ArrayList<String>
+//    val moveset: ArrayList<String>,
 //    val photo: Int,
 ) : Parcelable

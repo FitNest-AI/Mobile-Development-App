@@ -47,7 +47,7 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
             }
 
             override fun onQueryTextChange(msg: String): Boolean {
-                filter(msg)
+//                filter(msg)
                 return false
             }
         })
@@ -62,7 +62,7 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
 
             binding.rvWorkoutList.setHasFixedSize(true)
             binding.rvWorkoutList.layoutManager = LinearLayoutManager(context)
-            listWorkoutSet = HomeAdapter(diets)
+            listWorkoutSet = HomeAdapter(workoutItems)
             binding.rvWorkoutList.adapter = listWorkoutSet
         }
     }
@@ -86,21 +86,21 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
 //        return listWorkout
 //    }
 
-    private fun filter(text: String) {
-
-        val filteredlist: ArrayList<Workout> = ArrayList()
-
-        for (item in list) {
-            if (item.title.toLowerCase().contains(text.toLowerCase())) {
-                filteredlist.add(item)
-            }
-        }
-        if (filteredlist.isEmpty()) {
-            Toast.makeText(context, "No Data Found..", Toast.LENGTH_SHORT).show()
-        } else {
-            listWorkoutSet.filterList(filteredlist)
-        }
-    }
+//    private fun filter(text: String) {
+//
+//        val filteredlist: List<WorkoutItem> = ArrayList()
+//
+//        for (item in list) {
+//            if (item.title.toLowerCase().contains(text.toLowerCase())) {
+//                filteredlist.add(item)
+//            }
+//        }
+//        if (filteredlist.isEmpty()) {
+//            Toast.makeText(context, "No Data Found..", Toast.LENGTH_SHORT).show()
+//        } else {
+//            listWorkoutSet.filterList(filteredlist)
+//        }
+//    }
 
     private fun showLoading(isLoading: Boolean) {
         followBinding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE

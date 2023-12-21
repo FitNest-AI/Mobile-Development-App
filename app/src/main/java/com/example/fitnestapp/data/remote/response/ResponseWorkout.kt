@@ -1,6 +1,9 @@
 package com.example.fitnestapp.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+
 
 data class ResponseWorkout(
 
@@ -13,7 +16,7 @@ data class ResponseWorkout(
     @field:SerializedName("message")
     val message: String? = null
 )
-
+@Parcelize
 data class End(
 
     @field:SerializedName("right_knee")
@@ -33,8 +36,9 @@ data class End(
 
     @field:SerializedName("left_elbow")
     val leftElbow: Int? = null
-)
+): Parcelable
 
+@Parcelize
 data class ExerciseId(
 
     @field:SerializedName("image")
@@ -69,8 +73,8 @@ data class ExerciseId(
 
     @field:SerializedName("direction")
     val direction: String? = null
-)
-
+): Parcelable
+@Parcelize
 data class Data(
 
     @field:SerializedName("workout")
@@ -84,8 +88,8 @@ data class Data(
 
     @field:SerializedName("current_page")
     val currentPage: Int? = null
-)
-
+): Parcelable
+@Parcelize
 data class TargetMuscleIdItem(
 
     @field:SerializedName("name")
@@ -93,8 +97,9 @@ data class TargetMuscleIdItem(
 
     @field:SerializedName("_id")
     val id: String? = null
-)
+): Parcelable
 
+@Parcelize
 data class MovesetItem(
 
     @field:SerializedName("set")
@@ -105,8 +110,8 @@ data class MovesetItem(
 
     @field:SerializedName("rep")
     val rep: Int? = null
-)
-
+): Parcelable
+@Parcelize
 data class WorkoutItem(
 
     @field:SerializedName("rest")
@@ -131,15 +136,16 @@ data class WorkoutItem(
     val userId: String? = null,
 
     @field:SerializedName("moveset")
-    val moveset: List<MovesetItem?>? = null,
+    val moveset: List<MovesetItem>? = null,
 
     @field:SerializedName("point")
     val point: Point? = null,
 
     @field:SerializedName("desc")
     val desc: String? = null
-)
+): Parcelable
 
+@Parcelize
 data class LevelId(
 
     @field:SerializedName("name")
@@ -147,8 +153,9 @@ data class LevelId(
 
     @field:SerializedName("_id")
     val id: String? = null
-)
+): Parcelable
 
+@Parcelize
 data class Start(
 
     @field:SerializedName("right_knee")
@@ -168,8 +175,8 @@ data class Start(
 
     @field:SerializedName("left_elbow")
     val leftElbow: Int? = null
-)
-
+): Parcelable
+@Parcelize
 data class Point(
 
     @field:SerializedName("Quadriceps")
@@ -207,4 +214,4 @@ data class Point(
 
     @field:SerializedName("glutes")
     val glutes: Int? = null
-)
+):Parcelable

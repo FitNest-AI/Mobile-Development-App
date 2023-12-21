@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
 import com.example.fitnestapp.data.model.Exercise
 import com.example.fitnestapp.data.model.Workout
+import com.example.fitnestapp.data.remote.response.WorkoutItem
 import com.example.fitnestapp.databinding.ActivitySetBinding
 import com.example.fitnestapp.ui.camera.CameraActivity
 import com.example.fitnestapp.ui.camera.CameraX
@@ -24,10 +25,15 @@ class SetActivity : AppCompatActivity() {
 
         binding.rvSet.setHasFixedSize(true)
         binding.rvSet.layoutManager = LinearLayoutManager(this)
-        val popularSetAdapter = SetAdapter(list)
-        binding.rvSet.adapter = popularSetAdapter
+
+
 
         list.addAll(getSetList())
+        val receivedListWorkout: WorkoutItem? = intent.getParcelableExtra("data")
+        binding.tvName.setText(receivedListWorkout?.name)
+        binding.tvDesc.setText(receivedListWorkout?.desc)
+        val popularSetAdapter = SetAdapter(receivedListWorkout?.moveset!!)
+        binding.rvSet.adapter = popularSetAdapter
 
         binding.btnPlay.setOnClickListener {
             startActivity(Intent(this, CameraActivity::class.java))
