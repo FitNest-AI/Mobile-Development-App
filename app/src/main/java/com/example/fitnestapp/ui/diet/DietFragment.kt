@@ -1,33 +1,59 @@
 package com.example.fitnestapp.ui.diet
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
 import com.example.fitnestapp.data.model.Diet
-import com.example.fitnestapp.data.model.Workout
+import com.example.fitnestapp.data.remote.response.RecommendationItem
 import com.example.fitnestapp.databinding.FragmentDietBinding
-import com.example.fitnestapp.databinding.FragmentWorkoutListBinding
-import com.example.fitnestapp.ui.home.HomeAdapter
+import com.example.fitnestapp.factory.FoodModelFactory
 
 class DietFragment : Fragment(R.layout.fragment_diet) {
 
     private lateinit var binding: FragmentDietBinding
     private val list = ArrayList<Diet>()
 
+    private val viewModel by viewModels<DietViewModel> {
+        FoodModelFactory.getInstance(this.requireContext())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDietBinding.bind(view)
+        viewModel.food.observe(viewLifecycleOwner) { foodItems ->
+            val diets =
+                foodItems?.map {
+                    convertFoodItemToDiet(it)
+                }?.let { ArrayList(it) } ?: arrayListOf()
 
-        binding.rvDiet.setHasFixedSize(true)
-        binding.rvDiet.layoutManager = LinearLayoutManager(context)
-        val popularSetAdapter = DietFragmentAdapter(list)
-        binding.rvDiet.adapter = popularSetAdapter
+            binding.rvDiet.setHasFixedSize(true)
+            binding.rvDiet.layoutManager = LinearLayoutManager(context)
+            binding.rvDiet.adapter = DietFragmentAdapter(diets)
+            Log.d("ResponFood", foodItems.toString())
 
-        list.addAll(getListDiet())
+        }
+
+        viewModel.getSession().observe(viewLifecycleOwner) { userModel ->
+            val token = userModel.token
+            viewModel.getFood()
+            Log.d("ResponSession", userModel.toString())
+        }
+
+
+    }
+
+    private fun convertFoodItemToDiet(foodItem: RecommendationItem): Diet {
+        return Diet(
+            name = foodItem.label.toString(),
+            calorie = foodItem.calories.toString(),
+            fat = foodItem.fat.toString(),
+            carbohydrate = foodItem.carbs.toString(),
+            protein = foodItem.protein.toString()
+        )
     }
 
     private fun getListDiet(): ArrayList<Diet> {

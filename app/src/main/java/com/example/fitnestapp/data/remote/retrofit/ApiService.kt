@@ -2,11 +2,13 @@ package com.example.fitnestapp.data.remote.retrofit
 
 import com.example.fitnestapp.data.remote.response.ProfileResponse
 import com.example.fitnestapp.data.remote.response.ResponseDietPref
+import com.example.fitnestapp.data.remote.response.ResponseFood
 import com.example.fitnestapp.data.remote.response.ResponseGoal
 import com.example.fitnestapp.data.remote.response.ResponseLevel
 import com.example.fitnestapp.data.remote.response.ResponseLogin
 import com.example.fitnestapp.data.remote.response.ResponseRegist
 import com.example.fitnestapp.data.remote.response.ResponseTargetMuscle
+import com.example.fitnestapp.data.remote.response.ResponseWorkout
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -65,5 +67,14 @@ interface ApiService {
     @GET("api/v1/diet-pref/all")
     suspend fun getDietPref() : Response<ResponseDietPref>
 
+
+    @GET("/")
+    suspend fun getFood(
+    ): Response<ResponseFood>
+
+
+    @GET("/")
+    suspend fun getWorkout(
+    ): Response<ResponseWorkout>
 
 }

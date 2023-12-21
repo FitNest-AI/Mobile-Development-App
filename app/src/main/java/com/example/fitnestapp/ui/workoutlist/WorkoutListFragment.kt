@@ -1,14 +1,17 @@
 package com.example.fitnestapp.ui.workoutlist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
-import com.example.fitnestapp.databinding.FragmentWorkoutListBinding
 import com.example.fitnestapp.data.model.Workout
+import com.example.fitnestapp.databinding.FragmentWorkoutListBinding
+import com.example.fitnestapp.factory.WorkoutModelFactory
 import com.example.fitnestapp.ui.home.HomeAdapter
 
 class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
@@ -18,6 +21,10 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
     private var followBinding: FragmentWorkoutListBinding? = null
 
     private lateinit var listWorkoutSet: HomeAdapter
+    private val viewModel by viewModels<WorkoutViewModel> {
+        WorkoutModelFactory.getInstance(this.requireContext())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentWorkoutListBinding.bind(view)
@@ -43,6 +50,11 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
             }
         })
 
+        viewModel.getWorkout()
+
+        viewModel.workout.observe(viewLifecycleOwner) { workoutItems ->
+            Log.d("ResponWorkout", workoutItems.toString())
+        }
     }
 
     private fun getListWorkout(): ArrayList<Workout> {
