@@ -20,11 +20,11 @@ class WorkoutViewModel(private val repo: WorkoutRepo) : ViewModel() {
 
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: MutableLiveData<String?> = _errorMessage
-    fun getWorkout(token: String) {
+    fun getWorkout() {
 
         try {
             viewModelScope.launch {
-                val response = repo.getWorkout(token)
+                val response = repo.getWorkout()
                 if (response.isSuccessful) {
                     val workoutListNullable: List<WorkoutItem?>? = response.body()?.data?.workout
                     val workoutList: List<WorkoutItem> =

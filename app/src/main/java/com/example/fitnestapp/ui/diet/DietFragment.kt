@@ -36,7 +36,13 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
             Log.d("ResponFood", foodItems.toString())
 
         }
-        viewModel.getFood("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2UxY2FkZWM1ODRiOGMzMjNmODc2MCIsImlhdCI6MTcwMzAwMjE1OCwiZXhwIjoxNzM0NTM4MTU4fQ.IqXxs49aaWsjZkJhxM12IcjJTRmCQAY7xgTtWA4XWMw")
+
+        viewModel.getSession().observe(viewLifecycleOwner) { userModel ->
+            val token = userModel.token
+            viewModel.getFood()
+            Log.d("ResponSession", userModel.toString())
+        }
+
 
     }
 

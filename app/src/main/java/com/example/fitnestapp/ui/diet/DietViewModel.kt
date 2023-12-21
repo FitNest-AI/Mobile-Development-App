@@ -22,10 +22,13 @@ class DietViewModel(private val repo: FoodRepo) : ViewModel() {
     private val _food = MutableLiveData<List<RecommendationItem>>()
     val food: LiveData<List<RecommendationItem>> get() = _food
 
-    fun getFood(token: String) {
+    fun getFood() {
         viewModelScope.launch {
             try {
-                val response = repo.getFood(token)
+                val response = repo.getFood()
+//                Log.d("dwwdwdwdwdwd", )
+
+
                 if (response.isSuccessful && response.body() != null) {
                     _food.value = response.body()!!.recommendation?.filterNotNull()
                     Log.d("ResponFood", response.body()?.recommendation.toString())

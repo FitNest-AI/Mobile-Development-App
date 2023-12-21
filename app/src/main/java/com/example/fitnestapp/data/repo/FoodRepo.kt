@@ -10,8 +10,8 @@ import retrofit2.Response
 
 class FoodRepo(private val apiService: ApiService, private val userPreference: UserPreference) {
 
-    suspend fun getFood(token: String): Response<ResponseFood> {
-        return apiService.getFood(token)
+    suspend fun getFood(): Response<ResponseFood> {
+        return apiService.getFood()
     }
 
     fun getSession(): LiveData<UserModel> {

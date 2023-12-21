@@ -10,8 +10,8 @@ import retrofit2.Response
 
 class WorkoutRepo(private val apiService: ApiService, private val userPreference: UserPreference) {
 
-    suspend fun getWorkout(token: String): Response<ResponseWorkout> {
-        return apiService.getWorkout(token)
+    suspend fun getWorkout(): Response<ResponseWorkout> {
+        return apiService.getWorkout()
     }
 
     fun getSession(): LiveData<UserModel> {

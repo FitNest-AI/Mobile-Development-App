@@ -70,13 +70,11 @@ interface ApiService {
 
     @GET("/")
     suspend fun getFood(
-        @Header("Authorization") token: String,
     ): Response<ResponseFood>
 
 
     @GET("/")
     suspend fun getWorkout(
-        @Header("Authorization") token: String,
     ): Response<ResponseWorkout>
 
 }

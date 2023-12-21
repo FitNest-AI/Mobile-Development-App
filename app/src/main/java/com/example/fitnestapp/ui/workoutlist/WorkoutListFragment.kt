@@ -50,7 +50,7 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
             }
         })
 
-        viewModel.getWorkout("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2UxY2FkZWM1ODRiOGMzMjNmODc2MCIsImlhdCI6MTcwMzAwMjE1OCwiZXhwIjoxNzM0NTM4MTU4fQ.IqXxs49aaWsjZkJhxM12IcjJTRmCQAY7xgTtWA4XWMw")
+        viewModel.getWorkout()
 
         viewModel.workout.observe(viewLifecycleOwner) { workoutItems ->
             Log.d("ResponWorkout", workoutItems.toString())
