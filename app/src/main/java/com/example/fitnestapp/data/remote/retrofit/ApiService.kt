@@ -8,6 +8,7 @@ import com.example.fitnestapp.data.remote.response.ResponseLevel
 import com.example.fitnestapp.data.remote.response.ResponseLogin
 import com.example.fitnestapp.data.remote.response.ResponseRegist
 import com.example.fitnestapp.data.remote.response.ResponseTargetMuscle
+import com.example.fitnestapp.data.remote.response.ResponseWorkout
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -71,4 +72,10 @@ interface ApiService {
     suspend fun getFood(
         @Header("Authorization") token: String,
         ): Response<ResponseFood>
+
+
+    @GET("/")
+    suspend fun getWorkout(
+        @Header("Authorization") token: String,
+    ): Response<ResponseWorkout>
 }

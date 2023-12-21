@@ -65,9 +65,8 @@ class ApiConfigFood {
 
 
 class ApiConfigWorkout {
-
     companion object {
-        private const val BASE_URL = "https://food-recomender-jsxxsbqfrq-et.a.run.app/"
+        private const val BASE_URL = "https://workout-recomender-jsxxsbqfrq-et.a.run.app/"
         fun getApiService(token: String): ApiService {
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
