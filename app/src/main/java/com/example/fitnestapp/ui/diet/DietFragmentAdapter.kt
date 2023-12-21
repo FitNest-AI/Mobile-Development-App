@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fitnestapp.R
 import com.example.fitnestapp.data.model.Diet
 import com.example.fitnestapp.data.model.Workout
@@ -22,6 +23,7 @@ class DietFragmentAdapter(private var listDiet: ArrayList<Diet>): RecyclerView.A
     }
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val image: ImageView = itemView.findViewById(R.id.imageDiet)
         val name: TextView = itemView.findViewById(R.id.nameDiet)
         val calorie: TextView = itemView.findViewById(R.id.caloriDiet)
         val fat: TextView = itemView.findViewById(R.id.fatDiet)
@@ -43,7 +45,12 @@ class DietFragmentAdapter(private var listDiet: ArrayList<Diet>): RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, calorie, fat, carbohydrate, protein) = listDiet[position]
+        val (image,name, calorie, fat, carbohydrate, protein) = listDiet[position]
+        holder.image.apply {
+            Glide.with(context)
+                .load(image)
+                .into(this)
+        }
         holder.name.text = name
         holder.calorie.text = calorie
         holder.fat.text = fat

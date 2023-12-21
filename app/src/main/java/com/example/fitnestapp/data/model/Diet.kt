@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Diet(
+    val image: String,
     val name: String,
     val calorie: String,
     val fat: String,

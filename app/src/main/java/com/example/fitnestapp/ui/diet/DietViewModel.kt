@@ -19,6 +19,9 @@ class DietViewModel(private val repo: FoodRepo) : ViewModel() {
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: MutableLiveData<String?> = _errorMessage
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     private val _food = MutableLiveData<List<RecommendationItem>>()
     val food: LiveData<List<RecommendationItem>> get() = _food
 

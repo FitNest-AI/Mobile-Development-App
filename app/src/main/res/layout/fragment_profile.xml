@@ -13,17 +13,6 @@
         android:background="@color/red"
         android:layout_height="200dp" >
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="17dp"
-            android:backgroundTint="@color/grey"
-            android:textColor="@color/white"
-            android:text="Logout" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -44,15 +33,31 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:fontFamily="@font/inter_bold"/>
+
         <TextView
+            android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="85dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="85dp"
+            android:fontFamily="@font/inter_bold"
             android:text="Beginner"
             android:textColor="@color/yellow"
-            android:textSize="13sp"
-            android:fontFamily="@font/inter_bold"/>
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView17"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/red"
+            android:text="Logout"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

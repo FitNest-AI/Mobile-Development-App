@@ -39,10 +39,10 @@ class HomeAdapter(var listWorkout: ArrayList<Workout>): RecyclerView.Adapter<Hom
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, time, image) = listWorkout[position]
+        val (name, time) = listWorkout[position]
         holder.name.text = name
         holder.time.text = time
-        holder.image.setImageResource(image)
+//        holder.image.setImageResource(image)
 
         holder.btnPlay.setOnClickListener {
             val intentDetail = Intent(holder.itemView.context, SetActivity::class.java)

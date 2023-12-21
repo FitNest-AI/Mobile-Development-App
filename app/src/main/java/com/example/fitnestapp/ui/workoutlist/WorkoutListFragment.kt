@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnestapp.R
+import com.example.fitnestapp.data.model.Diet
 import com.example.fitnestapp.data.model.Workout
+import com.example.fitnestapp.data.remote.response.RecommendationItem
+import com.example.fitnestapp.data.remote.response.WorkoutItem
 import com.example.fitnestapp.databinding.FragmentWorkoutListBinding
 import com.example.fitnestapp.factory.WorkoutModelFactory
 import com.example.fitnestapp.ui.home.HomeAdapter
@@ -30,12 +33,11 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
         val binding = FragmentWorkoutListBinding.bind(view)
         followBinding = binding
 
-        binding.rvWorkoutList.setHasFixedSize(true)
-        binding.rvWorkoutList.layoutManager = LinearLayoutManager(context)
-        listWorkoutSet = HomeAdapter(list)
-        binding.rvWorkoutList.adapter = listWorkoutSet
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
 
-        list.addAll(getListWorkout())
+//        list.addAll(getListWorkout())
 
         binding.search.clearFocus()
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
@@ -53,21 +55,36 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
         viewModel.getWorkout()
 
         viewModel.workout.observe(viewLifecycleOwner) { workoutItems ->
-            Log.d("ResponWorkout", workoutItems.toString())
+            val diets =
+                workoutItems?.map {
+                    convertFoodItemToDiet(it)
+                }?.let { ArrayList(it) } ?: arrayListOf()
+
+            binding.rvWorkoutList.setHasFixedSize(true)
+            binding.rvWorkoutList.layoutManager = LinearLayoutManager(context)
+            listWorkoutSet = HomeAdapter(diets)
+            binding.rvWorkoutList.adapter = listWorkoutSet
         }
     }
 
-    private fun getListWorkout(): ArrayList<Workout> {
-        val dataName = resources.getStringArray(R.array.data_set_name)
-        val dataTime = resources.getStringArray(R.array.data_set_time)
-        val dataImage = resources.obtainTypedArray(R.array.data_set_image)
-        val listWorkout = ArrayList<Workout>()
-        for (i in dataName.indices) {
-            val workout = Workout(dataName[i], dataTime[i], dataImage.getResourceId(i, -1))
-            listWorkout.add(workout)
-        }
-        return listWorkout
+    private fun convertFoodItemToDiet(workoutItem: WorkoutItem): Workout {
+        return Workout(
+            title = workoutItem.name.toString(),
+            time = workoutItem.time.toString(),
+        )
     }
+
+//    private fun getListWorkout(): ArrayList<Workout> {
+//        val dataName = resources.getStringArray(R.array.data_set_name)
+//        val dataTime = resources.getStringArray(R.array.data_set_time)
+//        val dataImage = resources.obtainTypedArray(R.array.data_set_image)
+//        val listWorkout = ArrayList<Workout>()
+//        for (i in dataName.indices) {
+//            val workout = Workout(dataName[i], dataTime[i], dataImage.getResourceId(i, -1))
+//            listWorkout.add(workout)
+//        }
+//        return listWorkout
+//    }
 
     private fun filter(text: String) {
 
@@ -83,5 +100,9 @@ class WorkoutListFragment : Fragment(R.layout.fragment_workout_list) {
         } else {
             listWorkoutSet.filterList(filteredlist)
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        followBinding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

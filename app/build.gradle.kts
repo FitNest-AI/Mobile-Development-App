@@ -67,6 +67,7 @@ dependencies {
 
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("com.github.bumptech.glide:glide:4.15.0")
 
 
     implementation("androidx.camera:camera-camera2:1.3.0")

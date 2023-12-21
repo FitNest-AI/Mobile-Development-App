@@ -18,6 +18,9 @@ class WorkoutViewModel(private val repo: WorkoutRepo) : ViewModel() {
     private val _workout = MutableLiveData<List<WorkoutItem>>()
     val workout: LiveData<List<WorkoutItem>> get() = _workout
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: MutableLiveData<String?> = _errorMessage
     fun getWorkout() {

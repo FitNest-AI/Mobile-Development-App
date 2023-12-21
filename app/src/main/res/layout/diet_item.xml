@@ -124,7 +124,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/imageDiet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"

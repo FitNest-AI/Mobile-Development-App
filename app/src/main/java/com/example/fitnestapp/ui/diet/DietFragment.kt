@@ -37,6 +37,10 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
 
         }
 
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+
         viewModel.getSession().observe(viewLifecycleOwner) { userModel ->
             val token = userModel.token
             viewModel.getFood()
@@ -48,6 +52,7 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
 
     private fun convertFoodItemToDiet(foodItem: RecommendationItem): Diet {
         return Diet(
+            image = foodItem.image.toString(),
             name = foodItem.label.toString(),
             calorie = foodItem.calories.toString(),
             fat = foodItem.fat.toString(),
@@ -56,17 +61,21 @@ class DietFragment : Fragment(R.layout.fragment_diet) {
         )
     }
 
-    private fun getListDiet(): ArrayList<Diet> {
-        val name = resources.getStringArray(R.array.data_diet_name)
-        val calorie = resources.getStringArray(R.array.data_diet_calorie)
-        val fat = resources.getStringArray(R.array.data_diet_fat)
-        val carbohydrate = resources.getStringArray(R.array.data_diet_carbohydrate)
-        val protein = resources.getStringArray(R.array.data_diet_protein)
-        val listDiet = ArrayList<Diet>()
-        for (i in name.indices) {
-            val diet = Diet(name[i], calorie[i], fat[i], carbohydrate[i], protein[i])
-            listDiet.add(diet)
-        }
-        return listDiet
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
+
+//    private fun getListDiet(): ArrayList<Diet> {
+//        val name = resources.getStringArray(R.array.data_diet_name)
+//        val calorie = resources.getStringArray(R.array.data_diet_calorie)
+//        val fat = resources.getStringArray(R.array.data_diet_fat)
+//        val carbohydrate = resources.getStringArray(R.array.data_diet_carbohydrate)
+//        val protein = resources.getStringArray(R.array.data_diet_protein)
+//        val listDiet = ArrayList<Diet>()
+//        for (i in name.indices) {
+//            val diet = Diet(name[i], calorie[i], fat[i], carbohydrate[i], protein[i])
+//            listDiet.add(diet)
+//        }
+//        return listDiet
+//    }
 }
