@@ -1,6 +1,8 @@
 # Mobile Development Documentation
 
 ## Architecture: MVVM (Model-View-ViewModel)
+![image](https://github.com/FitNest-AI/Mobile-Development-App/assets/52656052/f8bb1bdd-0896-4e5c-977b-43bc9706b217)
+
 
 ## Features:
 
