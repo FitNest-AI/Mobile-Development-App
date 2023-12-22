@@ -73,5 +73,3 @@
 
 2. Import the cloned repository into Android Studio for further development.
 
-This documentation outlines the architecture, features, dependencies, and installation instructions for your mobile development project.
-
