@@ -11,13 +11,13 @@
 - Description: Allows users to log in to their existing accounts or create new ones.
   
 ### 3. Home Screen
-- Description: Displays buttons for actions like discovering workout sets, creating an account, and shows several recommended workout sets based on user preferences.
+- Description: Displays buttons for actions like discovering workout sets, creating an workout set, and shows several recommended workout sets based on user preferences with machine learning model.
 
 ### 4. Workout Set List Screen
-- Description: Lists all recommended workout sets.
+- Description: Lists all recommended workout sets and there search bar also.
 
 ### 5. Recommended Food Screen
-- Description: Displays recommended food options based on user preferences.
+- Description: Displays recommended food options based on user preferences with machine learning model.
 
 ### 6. Profile Screen
 - Description: Displays the user's profile information.
